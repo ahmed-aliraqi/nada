@@ -5,7 +5,7 @@
 {{ BsForm::textarea('description')->attribute('class', 'form-control textarea') }}
 @endMultilingualFormTabs
 
-{{ BsForm::select('name')->options($categories) }}
+{{ BsForm::select('category_id')->options($categories->toArray()) }}
 
 {{ BsForm::price('price')->currency('SAR') }}
 

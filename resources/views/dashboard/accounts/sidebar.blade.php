@@ -13,12 +13,12 @@
                 'can' => ['ability' => 'viewAny', 'model' => \App\Models\Admin::class],
                 'active' => request()->routeIs('*admins*'),
             ],
-            [
+            /*[
                 'name' => trans('supervisors.plural'),
                 'url' => route('dashboard.supervisors.index'),
                 'can' => ['ability' => 'viewAny', 'model' => \App\Models\Supervisor::class],
                 'active' => request()->routeIs('*supervisors*'),
-            ],
+            ],*/
             [
                 'name' => trans('customers.plural'),
                 'url' => route('dashboard.customers.index'),
