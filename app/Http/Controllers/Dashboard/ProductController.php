@@ -47,6 +47,8 @@ class ProductController extends Controller
     {
         $product = Product::create($request->all());
 
+        $product->addAllMediaFromTokens($request->images);
+
         flash()->success(__('products.messages.created'));
 
         return redirect()->route('dashboard.products.show', $product);
@@ -80,6 +82,8 @@ class ProductController extends Controller
         Product $product
     ): RedirectResponse {
         $product->update($request->all());
+
+        $product->addAllMediaFromTokens($request->images);
 
         flash()->success(__('products.messages.updated'));
 

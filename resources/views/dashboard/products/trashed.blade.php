@@ -35,8 +35,12 @@
                   <x-check-all-item :model="$product"></x-check-all-item>
                 </td>
                 <td>
-                    <a href="{{ route('dashboard.products.trashed.show', $product) }}"
+                    <a href="{{ route('dashboard.products.show', $product) }}"
                        class="text-decoration-none text-ellipsis">
+
+                        <img src="{{ $product->getFirstMediaUrl() }}"
+                             alt="{{ __('products.singular') }}"
+                             class="img-circle img-size-32 mr-2" style="height: 32px;">
                         {{ $product->name }}
                     </a>
                 </td>

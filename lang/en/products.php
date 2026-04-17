@@ -37,6 +37,7 @@ return [
         '%description%' => 'Products description',
         'price' => 'Price',
         'active' => 'Active',
+        'images' => 'Products images',
     ],
     'dialogs' => [
         'delete' => [

@@ -37,6 +37,7 @@ return [
         '%description%' => 'وصف المنتج',
         'price' => 'السعر',
         'active' => 'مفعل',
+        'images' => 'صور المنتج',
     ],
     'dialogs' => [
         'delete' => [

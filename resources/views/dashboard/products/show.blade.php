@@ -31,6 +31,14 @@
                             <x-boolean is="{{ $product->active }}"></x-boolean>
                         </td>
                     </tr>
+                    @if($product->getFirstMedia())
+                        <tr>
+                            <th width="200">@lang('products.attributes.images')</th>
+                            <td>
+                                <file-preview :media="{{ $product->getMediaResource() }}"></file-preview>
+                            </td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
 
