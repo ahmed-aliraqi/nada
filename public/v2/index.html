@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Store — Luxury Makeup & Perfumes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="home">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-luxury fixed-top">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-text" href="index.html">Beauty<span>Store</span></a>
+        <div class="d-flex align-items-center gap-2 d-lg-none order-lg-last">
+            <button class="navbar-icon theme-toggle-btn" aria-label="Toggle theme">
+                <i class="fas fa-sun theme-toggle-icon"></i>
+            </button>
+            <a href="cart.html" class="navbar-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+                <i class="fas fa-bars" style="color:var(--text-secondary)"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <div class="d-none d-lg-flex align-items-center gap-2">
+                <button class="navbar-icon theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fas fa-sun theme-toggle-icon"></i>
+                </button>
+                <a href="cart.html" class="navbar-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-bg" style="background-image:url('https://picsum.photos/seed/luxury-beauty-hero/1920/1080')"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-7">
+                <span class="section-label reveal">New Collection 2025</span>
+                <h1 class="hero-title reveal reveal-delay-1">Discover Your <em>Signature</em> Beauty</h1>
+                <p class="hero-desc reveal reveal-delay-2">Explore our curated collection of luxury perfumes and premium makeup, crafted for those who believe beauty is an art form.</p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="shop.html" class="btn-gold">Explore Collection</a>
+                    <a href="about.html" class="btn-outline-gold">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <div class="line"></div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label reveal">Collections</span>
+            <h2 class="section-title reveal reveal-delay-1">Shop by Category</h2>
+            <div class="gold-line-center reveal reveal-delay-2"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4 reveal reveal-delay-1">
+                <a href="shop.html" class="d-block">
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/makeup-category/600/800" alt="Makeup" loading="lazy">
+                        <div class="category-overlay">
+                            <h4>Makeup</h4>
+                            <p>Foundation, lips, eyes & more</p>
+                            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-2">
+                <a href="shop.html" class="d-block">
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/perfume-category/600/800" alt="Perfumes" loading="lazy">
+                        <div class="category-overlay">
+                            <h4>Perfumes</h4>
+                            <p>Floral, oriental, woody & fresh</p>
+                            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-3">
+                <a href="shop.html" class="d-block">
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/offers-category/600/800" alt="Special Offers" loading="lazy">
+                        <div class="category-overlay">
+                            <h4>Special Offers</h4>
+                            <p>Exclusive deals & limited editions</p>
+                            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section-padding" style="background:var(--bg-secondary)">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3">
+            <div>
+                <span class="section-label reveal">Curated for You</span>
+                <h2 class="section-title reveal reveal-delay-1">Featured Products</h2>
+                <div class="gold-line reveal reveal-delay-2"></div>
+            </div>
+            <a href="shop.html" class="btn-outline-gold btn-sm-gold reveal reveal-delay-3">View All</a>
+        </div>
+        <div class="row g-4" id="featured-grid">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="section-padding">
+    <div class="container">
+        <div class="cta-banner reveal text-center position-relative">
+            <span class="section-label">Limited Time</span>
+            <h2 class="mt-2 mb-3" style="font-size:clamp(1.6rem,3.5vw,2.5rem)">Get 20% Off Your First Order</h2>
+            <p class="text-secondary-custom mx-auto mb-4" style="max-width:500px">Join our exclusive beauty community and receive a welcome gift on your first purchase.</p>
+            <a href="shop.html" class="btn-gold">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Best Sellers -->
+<section class="section-padding" style="background:var(--bg-secondary)">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3">
+            <div>
+                <span class="section-label reveal">Customer Favorites</span>
+                <h2 class="section-title reveal reveal-delay-1">Best Sellers</h2>
+                <div class="gold-line reveal reveal-delay-2"></div>
+            </div>
+            <a href="shop.html" class="btn-outline-gold btn-sm-gold reveal reveal-delay-3">View All</a>
+        </div>
+        <div class="row g-4" id="bestsellers-grid">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-luxury">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="footer-brand">Beauty<span>Store</span></div>
+                <p class="footer-desc">A curated destination for luxury makeup and perfumes. Where beauty meets artistry, and every product tells a story of elegance.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h5 class="footer-heading">Shop</h5>
+                <ul class="footer-links">
+                    <li><a href="shop.html">Makeup</a></li>
+                    <li><a href="shop.html">Perfumes</a></li>
+                    <li><a href="shop.html">New Arrivals</a></li>
+                    <li><a href="shop.html">Best Sellers</a></li>
+                    <li><a href="shop.html">Special Offers</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h5 class="footer-heading">Company</h5>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="footer-heading">Stay Connected</h5>
+                <p class="footer-desc" style="font-size:0.85rem;margin-bottom:1rem">Subscribe for exclusive offers, beauty tips, and early access to new collections.</p>
+                <form class="d-flex gap-2" onsubmit="event.preventDefault();showToast('Subscribed successfully!','fa-heart')">
+                    <input type="email" placeholder="Your email address" class="form-input-luxury flex-grow-1" required style="border-radius:var(--radius-xl)">
+                    <button type="submit" class="btn-gold btn-sm-gold" style="white-space:nowrap">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BeautyStore. All rights reserved. Crafted with passion.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
