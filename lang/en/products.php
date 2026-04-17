@@ -1,0 +1,61 @@
+<?php
+
+return [
+    'singular' => 'Product',
+    'plural' => 'Products',
+    'empty' => 'There are no products yet.',
+    'count' => 'Products count.',
+    'search' => 'Search',
+    'select' => 'Select Product',
+    'permission' => 'Manage products',
+    'trashed' => 'Trashed products',
+    'perPage' => 'Results per page',
+    'filter' => 'Search for product',
+    'actions' => [
+        'list' => 'List all',
+        'create' => 'Create a new product',
+        'show' => 'Show product',
+        'edit' => 'Edit product',
+        'delete' => 'Delete product',
+        'restore' => 'Restore',
+        'forceDelete' => 'Delete Forever',
+        'options' => 'Options',
+        'save' => 'Save',
+        'filter' => 'Filter',
+    ],
+    'messages' => [
+        'created' => 'The product has been created successfully.',
+        'updated' => 'The product has been updated successfully.',
+        'deleted' => 'The product has been deleted successfully.',
+        'restored' => 'The product has been restored successfully.',
+    ],
+    'attributes' => [
+        'category_id' => 'Category',
+        'name' => 'Products name',
+        '%name%' => 'Products name',
+        'description' => 'Products description',
+        '%description%' => 'Products description',
+        'price' => 'Price',
+        'active' => 'Active',
+    ],
+    'dialogs' => [
+        'delete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to delete the product ?',
+            'confirm' => 'Delete',
+            'cancel' => 'Cancel',
+        ],
+        'restore' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to restore the product ?',
+            'confirm' => 'Restore',
+            'cancel' => 'Cancel',
+        ],
+        'forceDelete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to delete the product forever ?',
+            'confirm' => 'Delete Forever',
+            'cancel' => 'Cancel',
+        ],
+    ],
+];

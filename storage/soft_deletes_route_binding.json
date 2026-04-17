@@ -3,5 +3,7 @@
     "trashed_supervisor": "App\\Models\\Supervisor",
     "trashed_customer": "App\\Models\\Customer",
     "trashed_feedback": "App\\Models\\Feedback",
-    "trashed_mail_template": "App\\Models\\MailTemplate"
+    "trashed_mail_template": "App\\Models\\MailTemplate",
+    "trashed_category": "App\\Models\\Category",
+    "trashed_product": "App\\Models\\Product"
 }

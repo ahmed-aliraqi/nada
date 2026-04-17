@@ -17,5 +17,7 @@ class DummyDataSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(MailTemplateSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }

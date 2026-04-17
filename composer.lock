@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64c61a5a56a223925149b900b575211a",
+    "content-hash": "b6107e692371a1bb193af37797c34f39",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-filterable",
@@ -10334,6 +10334,57 @@
                 }
             ],
             "time": "2024-05-06T16:37:16+00:00"
+        },
+        {
+            "name": "eventat-modules/fees",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eventat-modules/fees-module.git",
+                "reference": "cd28b4439adc3a9763d08e60cdc12a3774f59ca3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eventat-modules/fees-module/zipball/cd28b4439adc3a9763d08e60cdc12a3774f59ca3",
+                "reference": "cd28b4439adc3a9763d08e60cdc12a3774f59ca3",
+                "shasum": ""
+            },
+            "require": {
+                "ahmed-aliraqi/crud-generator": "^6.0",
+                "laravel-modules/module-generator": "^3.2",
+                "laravel/framework": "^12.0",
+                "laravel/prompts": "^0.3.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eventat\\Fees\\FeesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eventat\\Fees\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Fathy",
+                    "email": "fathy.dev@gmail.com",
+                    "homepage": "https://eventat.sa"
+                }
+            ],
+            "description": "This fees module for the eventat's projects",
+            "support": {
+                "issues": "https://github.com/eventat-modules/fees-module/issues",
+                "source": "https://github.com/eventat-modules/fees-module/tree/v1.1.2"
+            },
+            "time": "2026-03-23T05:40:03+00:00"
         },
         {
             "name": "fakerphp/faker",

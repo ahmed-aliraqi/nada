@@ -3,5 +3,7 @@
     "manage.customers",
     "manage.feedback",
     "manage.settings",
-    "manage.mail_templates"
+    "manage.mail_templates",
+    "manage.categories",
+    "manage.products"
 ]

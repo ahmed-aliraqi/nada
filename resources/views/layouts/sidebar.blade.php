@@ -9,4 +9,6 @@
 {{-- The sidebar of generated crud will set here: Don't remove this line --}}
 @include('dashboard.feedback.partials.actions.sidebar')
 @include('dashboard.mail-templates.partials.actions.sidebar')
+@include('dashboard.categories.partials.actions.sidebar')
+@include('dashboard.products.partials.actions.sidebar')
 @include('dashboard.settings.sidebar')
