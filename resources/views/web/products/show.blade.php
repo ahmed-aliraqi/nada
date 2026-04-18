@@ -90,7 +90,7 @@
 
                         <!-- Short description -->
                         <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.9;margin-bottom:1.8rem;font-weight:300;">
-                            {{ $product->description }}
+                            {!! $product->description !!}
                         </p>
 
                         <!-- Quantity -->
@@ -115,7 +115,7 @@
                                 <span>Buy Now</span>
                             </button>
                         </div>
-                        
+
                     </div><!-- /sticky -->
                 </div><!-- /col -->
             </div><!-- /row -->
