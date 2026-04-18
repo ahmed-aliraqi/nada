@@ -31,6 +31,32 @@ return [
                 'subtitle:ar' => 'Subtitle (Arabic)',
             ],
         ],
+        'featured' => [
+            'attributes' => [
+                'title:en' => 'Title (English)',
+                'title:ar' => 'Title (Arabic)',
+                'subtitle:en' => 'Subtitle (English)',
+                'subtitle:ar' => 'Subtitle (Arabic)',
+            ],
+        ],
+        'limited_edition' => [
+            'attributes' => [
+                'title:en' => 'Title (English)',
+                'title:ar' => 'Title (Arabic)',
+                'subtitle:en' => 'Subtitle (English)',
+                'subtitle:ar' => 'Subtitle (Arabic)',
+                'background' => 'Background Image',
+                'link' => 'Link',
+            ],
+        ],
+        'most_loved' => [
+            'attributes' => [
+                'title:en' => 'Title (English)',
+                'title:ar' => 'Title (Arabic)',
+                'subtitle:en' => 'Subtitle (English)',
+                'subtitle:ar' => 'Subtitle (Arabic)',
+            ],
+        ],
     ],
     'dialogs' => [
         'delete' => [

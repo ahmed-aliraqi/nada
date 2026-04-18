@@ -31,6 +31,32 @@ return [
                 'subtitle:ar' => 'العنوان الفرعي (بالعربية)',
             ],
         ],
+        'featured' => [
+            'attributes' => [
+                'title:en' => 'العنوان (إنجليزي)',
+                'title:ar' => 'العنوان (عربي)',
+                'subtitle:en' => 'العنوان الفرعي (إنجليزي)',
+                'subtitle:ar' => 'العنوان الفرعي (عربي)',
+            ],
+        ],
+        'limited_edition' => [
+            'attributes' => [
+                'title:en' => 'العنوان (إنجليزي)',
+                'title:ar' => 'العنوان (عربي)',
+                'subtitle:en' => 'العنوان الفرعي (إنجليزي)',
+                'subtitle:ar' => 'العنوان الفرعي (عربي)',
+                'background' => 'صورة الخلفية',
+                'link' => 'الرابط',
+            ],
+        ],
+        'most_loved' => [
+            'attributes' => [
+                'title:en' => 'العنوان (إنجليزي)',
+                'title:ar' => 'العنوان (عربي)',
+                'subtitle:en' => 'العنوان الفرعي (إنجليزي)',
+                'subtitle:ar' => 'العنوان الفرعي (عربي)',
+            ],
+        ],
     ],
     'dialogs' => [
         'delete' => [
