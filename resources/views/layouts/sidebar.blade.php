@@ -11,4 +11,5 @@
 {{--@include('dashboard.mail-templates.partials.actions.sidebar')--}}
 @include('dashboard.categories.partials.actions.sidebar')
 @include('dashboard.products.partials.actions.sidebar')
+@include('dashboard.ui.sidebar')
 {{--@include('dashboard.settings.sidebar')--}}

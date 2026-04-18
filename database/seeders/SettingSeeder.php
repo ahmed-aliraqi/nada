@@ -44,8 +44,8 @@ class SettingSeeder extends Seeder
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.'
         );
 
-        Settings::set('name:en', 'Scaffolding');
-        Settings::set('name:ar', 'Scaffolding');
+        Settings::set('name:en', 'TRENDORA');
+        Settings::set('name:ar', 'TRENDORA');
 
         Settings::set('copyright:en', 'Copyright © '.date('Y').' '.app_name().' All rights reserved.');
         Settings::set('copyright:ar', 'جميع الحقوق محفوظة');

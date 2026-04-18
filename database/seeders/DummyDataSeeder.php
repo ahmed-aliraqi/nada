@@ -19,5 +19,6 @@ class DummyDataSeeder extends Seeder
         $this->call(MailTemplateSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(UiSeeder::class);
     }
 }

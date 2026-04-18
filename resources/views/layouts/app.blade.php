@@ -1,182 +1,162 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{ Locales::getCode() }}" dir="{{ Locales::getDir() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ isset($title) ? sprintf('%s - ', $title): '' }}TRENDORA</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="/html/css/style.css" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/html/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/html/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/html/favicon-16x16.png">
-    <link rel="manifest" href="/html/site.webmanifest">
+    <title>{{ $title ? $title .' | '. app_name() : app_name() }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/v3/css/style-{{ Locales::getDir() }}.css" rel="stylesheet">
 </head>
 <body>
 <!-- Loading Screen -->
 <div id="loading-screen">
     <div class="loader-content">
         <div class="loader-spinner"></div>
-        <span class="brand-name">TRENDORA</span>
+        <span class="brand-name">{{ app_name() }}</span>
     </div>
 </div>
 
-<!-- Page Wrapper -->
-<div class="page-wrapper">
-    <!-- Navbar -->
-    <nav class="navbar-main">
-        <div class="navbar-inner">
-            <a href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}" class="navbar-brand">
-                <div class="brand-icon">
-                    <img src="/html/images/icon-h36.png" alt="">
-                    <!--                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-                    <!--                        <circle cx="20" cy="20" r="18" stroke="#C9A96E" stroke-width="1.5"/>-->
-                    <!--                        <path d="M20 6 L20 34" stroke="#C9A96E" stroke-width="1.5"/>-->
-                    <!--                        <path d="M14 10 C14 10 20 14 20 20 C20 26 14 30 14 30" stroke="#C9A96E" stroke-width="1.5" fill="none"/>-->
-                    <!--                        <path d="M26 10 C26 10 20 14 20 20 C20 26 26 30 26 30" stroke="#C9A96E" stroke-width="1.5" fill="none"/>-->
-                    <!--                        <circle cx="20" cy="20" r="3" fill="#C9A96E"/>-->
-                    <!--                    </svg>-->
-                </div>
-                <span class="brand-text">TRENDORA</span>
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-luxury">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-luxury d-flex gap-2" href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}">
+            <img src="/html/images/icon-h36.png" alt="">
+            <span>{{ app_name() }}</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-3 d-lg-none order-lg-last">
+            <div class="lang-switcher">
+                <span class="active-lang">EN</span>
+                <span class="divider">|</span>
+                <span>AR</span>
+            </div>
+            <a href="{{ LaravelLocalization::getLocalizedURL(url: '/cart') }}" class="nav-icon-btn">
+                <i class="bi bi-bag"></i>
+                <span class="badge-dot"></span>
             </a>
-            <ul class="navbar-links">
-                <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}" data-i18n="nav_home">Home</a></li>
-                <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" data-i18n="nav_shop">Shop</a></li>
-                <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}" data-i18n="nav_about">About</a></li>
-                <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}" data-i18n="nav_contact">Contact</a></li>
+            <button class="navbar-toggler-luxury" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-luxury{{ in_array(request()->path(), ['ar', 'en']) ? ' active' : '' }}"
+                       href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}">
+                        {{ __('Home') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-luxury{{ request()->segment(2) === 'shop' ? ' active' : '' }}"
+                       href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">
+                        {{ __('Shop') }}
+                    </a
+                    ></li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-luxury{{ request()->segment(2) === 'about' ? ' active' : '' }}"
+                       href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}">
+                        {{ __('About') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-luxury{{ request()->segment(2) === 'contact' ? ' active' : '' }}"
+                       href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}">
+                        {{ __('Contact') }}
+                    </a>
+                </li>
             </ul>
-            <div class="navbar-actions">
-                <button class="nav-action-btn theme-toggle-btn" title="Toggle theme"><i class="bi bi-moon"></i></button>
-                <button class="nav-action-btn lang-btn" title="Switch language">AR</button>
-                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/cart') }}" class="nav-action-btn" title="Cart">
+            <div class="d-flex align-items-center gap-3 d-none d-lg-flex">
+                <div class="lang-switcher">
+                    <a rel="alternate"  hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                        <span class="{{ app()->getLocale() == 'en' ? 'active-lang' : '' }}">EN</span>
+                    </a>
+
+                    <span class="divider">|</span>
+                    <a rel="alternate"  hreflang="ar" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
+                        <span class="{{ app()->getLocale() == 'ar' ? 'active-lang' : '' }}">AR</span>
+                    </a>
+                </div>
+                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/cart') }}" class="nav-icon-btn">
                     <i class="bi bi-bag"></i>
-                    <span class="cart-badge d-none" id="cart-badge">0</span>
+                    <span class="badge-dot"></span>
                 </a>
-                <div class="mobile-toggle"><span></span><span></span><span></span></div>
             </div>
         </div>
-    </nav>
-    <div class="mobile-menu">
-        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}" data-i18n="nav_home">Home</a>
-        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" data-i18n="nav_shop">Shop</a>
-        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}" data-i18n="nav_about">About</a>
-        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}" data-i18n="nav_contact">Contact</a>
-        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/cart') }}"><i class="bi bi-bag"></i> <span data-i18n="nav_shop">Cart</span></a>
     </div>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-decor"></div>
-        <div class="container-custom">
-            <div class="hero-content">
-                <span class="hero-badge" data-i18n="hero_badge">NEW COLLECTION 2025</span>
-                <h1 class="hero-title">
-                    <span data-i18n="hero_title_1">Discover Your</span><br>
-                    <span class="gold-text" data-i18n="hero_title_2">Perfect Beauty</span>
-                </h1>
-                <p class="hero-desc" data-i18n="hero_desc">Explore our curated collection of premium makeup and luxurious perfumes. Elegance meets innovation.</p>
-                <div class="hero-actions">
-                    <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" class="btn-gold"><span data-i18n="hero_btn_shop">Shop Now</span> <i class="bi bi-arrow-right"></i></a>
-                    <a href="#categories" class="btn-outline"><span data-i18n="hero_btn_explore">Explore</span></a>
+</nav>
+@yield('content')
+<!-- ========== FOOTER ========== -->
+<footer class="footer-luxury">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <div class="footer-brand">{{ app_name() }}</div>
+                <p class="footer-desc">
+                    A sanctuary of luxury beauty and fragrances. We curate the finest products from around the world for the discerning individual.
+                </p>
+                <div class="footer-social mt-3">
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Shop</h6>
+                <ul class="footer-links">
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Perfumes</a></li>
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Makeup</a></li>
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Body Care</a></li>
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Gift Sets</a></li>
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Company</h6>
+                <ul class="footer-links">
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}">About Us</a></li>
+                    <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Support</h6>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Contact</h6>
+                <ul class="footer-links">
+                    <li><a href="mailto:hello@beautystore.com">hello@beautystore.com</a></li>
+                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                    <li><a href="#">Dubai, UAE</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2025 Beauty Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>Crafted with <span class="text-gold">&hearts;</span> for beauty lovers</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- Categories -->
-    <section class="section" id="categories">
-        <div class="container-custom">
-            <div class="section-header reveal">
-                <span class="section-label" data-i18n="cat_section_label">BROWSE BY CATEGORY</span>
-                <h2 class="section-title" data-i18n="cat_section_title">Find What You Love</h2>
-            </div>
-            <div class="categories-grid" id="categories-grid"></div>
-        </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="section" style="background: var(--bg-tertiary);">
-        <div class="container-custom">
-            <div class="section-header reveal">
-                <span class="section-label" data-i18n="featured_label">CURATED FOR YOU</span>
-                <h2 class="section-title" data-i18n="featured_title">Featured Products</h2>
-            </div>
-            <div class="products-grid" id="featured-grid"></div>
-            <div class="text-center mt-5 reveal">
-                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" class="btn-outline"><span data-i18n="hero_btn_shop">Shop Now</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Best Sellers -->
-    <section class="section carousel-section">
-        <div class="container-custom">
-            <div class="section-header reveal">
-                <span class="section-label" data-i18n="best_label">CUSTOMER FAVORITES</span>
-                <h2 class="section-title" data-i18n="best_title">Best Sellers</h2>
-            </div>
-            <div class="products-grid" id="bestsellers-grid"></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container-custom">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-text">TRENDORA</span>
-                    <p data-i18n="footer_desc">Your destination for premium beauty products and luxurious fragrances. Discover elegance with every purchase.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"><i class="bi bi-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h5 data-i18n="footer_links">Quick Links</h5>
-                    <ul>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}" data-i18n="nav_home">Home</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" data-i18n="nav_shop">Shop</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}" data-i18n="nav_about">About</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}" data-i18n="nav_contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5 data-i18n="footer_help">Help</h5>
-                    <ul>
-                        <li><a href="#" data-i18n="footer_faq">FAQ</a></li>
-                        <li><a href="#" data-i18n="footer_shipping">Shipping Info</a></li>
-                        <li><a href="#" data-i18n="footer_returns">Returns</a></li>
-                        <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5 data-i18n="footer_help">Help</h5>
-                    <ul>
-                        <li><a href="#" data-i18n="footer_terms">Terms of Service</a></li>
-                        <li><a href="#" data-i18n="footer_faq">FAQ</a></li>
-                        <li><a href="#" data-i18n="footer_returns">Returns</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}" data-i18n="nav_contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2025 TRENDORA. <span data-i18n="footer_rights">All rights reserved.</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scroll to Top -->
-    <button class="scroll-top"><i class="bi bi-chevron-up"></i></button>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/html/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/v3/js/main.js"></script>
 </body>
 </html>

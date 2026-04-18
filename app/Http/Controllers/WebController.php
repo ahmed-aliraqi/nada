@@ -11,10 +11,8 @@ class WebController extends Controller
      */
     public function __invoke(string $view = 'home')
     {
-        $lang = app()->getLocale();
-
-        if (view()->exists("web.$lang.$view")) {
-            return view("web.$lang.$view");
+        if (view()->exists("web.$view")) {
+            return view("web.$view");
         }
 
         abort(404);

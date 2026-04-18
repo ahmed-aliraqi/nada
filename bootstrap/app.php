@@ -23,6 +23,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'dashboard.locales',
         ]);
 
+        $middleware->appendToGroup('web', [
+            \App\Http\Middleware\SharedVariablesMiddleware::class,
+        ]);
+
         $middleware->alias([
             'dashboard.access' => DashboardAccessMiddleware::class,
             'dashboard.locales' => DashboardLocaleMiddleware::class,

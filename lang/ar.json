@@ -2,9 +2,17 @@
     "Verify Your Email Address": "تحقق من عنوان بريدك الإلكتروني",
     "A fresh verification link has been sent to your email address.": "تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.",
     "If you did not receive the email": "إذا لم تستلم البريد الإلكتروني",
-    "click here to request another": "انقر هنا لطلب آخر"
+    "click here to request another": "انقر هنا لطلب رابط آخر",
+    "Download": "تحميل",
+    "Explore Collection": "استكشف المجموعة",
+    "Our Story": "قصتنا",
+    "Products Count": "عدد المنتجات",
+    "Happy Clients": "عملاؤنا السعداء",
+    "Collections": "المجموعات",
+    "New user has been registered.": "تم تسجيل مستخدم جديد.",
+    "Home": "الرئيسية",
+    "Shop": "المتجر",
+    "About": "من نحن",
+    "Contact": "اتصل بنا",
+    "Product": "Product"
 }
-
-
-
-

@@ -82,3 +82,10 @@ if (! function_exists('count_formatted')) {
         return $num;
     }
 }
+
+if (! function_exists('ui_section')) {
+    function ui_section(string $name): \AhmedAliraqi\Ui\Models\UiSection|\Illuminate\Database\Eloquent\Collection|null
+    {
+        return \AhmedAliraqi\Ui\Section::make($name);
+    }
+}

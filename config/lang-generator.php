@@ -24,6 +24,11 @@ return [
         'supervisors' => base_path('lang/{lang}/supervisors.php'),
         'users' => base_path('lang/{lang}/users.php'),
         'verification' => base_path('lang/{lang}/verification.php'),
+        'emails' => base_path('lang/{lang}/emails.php'),
+        'products' => base_path('lang/{lang}/products.php'),
+        'categories' => base_path('lang/{lang}/categories.php'),
+        'excel' => base_path('lang/{lang}/excel.php'),
+        'ui' => base_path('lang/{lang}/ui.php'),
         /*  The lang of generated crud will set here: Don't remove this line */
     ],
 

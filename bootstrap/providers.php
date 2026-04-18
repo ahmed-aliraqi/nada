@@ -1,5 +1,6 @@
 <?php
 
+use AhmedAliraqi\Ui\ServiceProvider;
 use App\Providers\AppServiceProvider;
 use App\Providers\HorizonServiceProvider;
 use App\Providers\LayoutsServiceProvider;
@@ -10,4 +11,5 @@ return [
     HorizonServiceProvider::class,
     LayoutsServiceProvider::class,
     SoftDeletesServiceProvider::class,
+    ServiceProvider::class,
 ];
