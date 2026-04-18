@@ -76,7 +76,7 @@ class Product extends Model implements Exportable, Importable, TranslatableContr
 
     public function getPriceWithCurrency(): string
     {
-        return sprintf('%s %.2f', '$', number_format($this->price, 2));
+        return sprintf('%s %.2f', config('app.currency'), number_format($this->price, 2));
     }
 
     /**

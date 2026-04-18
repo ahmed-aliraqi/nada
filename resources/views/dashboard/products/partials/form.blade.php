@@ -7,7 +7,7 @@
 
 {{ BsForm::select('category_id')->options($categories->toArray()) }}
 
-{{ BsForm::price('price')->currency('$') }}
+{{ BsForm::price('price')->currency(config('app.currency')) }}
 
 
 {{ BsForm::checkbox('active')->value(1)->checked(isset($fee) && $fee->active) }}
