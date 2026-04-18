@@ -79,13 +79,13 @@
                             </div>
                             <span style="font-size:0.85rem;color:var(--text-muted);">5.0 — 48 Reviews</span>
                             <span style="font-size:0.82rem;color:#6FCF97;display:flex;align-items:center;gap:4px;">
-                <i class="bi bi-patch-check-fill"></i> Verified
+                <i class="bi bi-patch-check-fill"></i> {{ __('Verified') }}
               </span>
                         </div>
 
                         <!-- Price -->
                         <div style="margin-bottom:1.8rem;">
-                            <span style="font-family:var(--font-serif);font-size:2.2rem;font-weight:700;color:var(--accent-gold);">$185.00</span>
+                            <span style="font-family:var(--font-serif);font-size:2.2rem;font-weight:700;color:var(--accent-gold);">{{ $product->getPriceWithCurrency() }}</span>
                         </div>
 
                         <!-- Short description -->
