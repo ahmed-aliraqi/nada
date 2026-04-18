@@ -30,9 +30,14 @@
 
         <div class="d-flex align-items-center gap-3 d-lg-none order-lg-last">
             <div class="lang-switcher">
-                <span class="active-lang">EN</span>
+                <a rel="alternate"  hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                    <span class="{{ app()->getLocale() == 'en' ? 'active-lang' : '' }}">EN</span>
+                </a>
+
                 <span class="divider">|</span>
-                <span>AR</span>
+                <a rel="alternate"  hreflang="ar" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
+                    <span class="{{ app()->getLocale() == 'ar' ? 'active-lang' : '' }}">AR</span>
+                </a>
             </div>
             <a href="{{ LaravelLocalization::getLocalizedURL(url: '/cart') }}" class="nav-icon-btn">
                 <i class="bi bi-bag"></i>
