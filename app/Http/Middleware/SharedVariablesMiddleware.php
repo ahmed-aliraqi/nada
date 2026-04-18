@@ -26,7 +26,13 @@ class SharedVariablesMiddleware
                     return Customer::count();
                 }),
                 'categories' => Cache::remember('categories', now()->hours(2), function () {
-                    return Category::all();
+                    return Category::query()->inRandomOrder()->limit(6)->get();
+                }),
+                'featuredProducts' => Cache::remember('featured_products', now()->hours(2), function () {
+                    return Product::query()->inRandomOrder()->limit(4)->get();
+                }),
+                'mostLovedProducts' => Cache::remember('most_loved_products', now()->hours(2), function () {
+                    return Product::query()->inRandomOrder()->limit(4)->get();
                 }),
             ]);
         });

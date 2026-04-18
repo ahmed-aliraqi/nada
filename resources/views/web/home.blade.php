@@ -52,8 +52,8 @@
                 <p class="section-subtitle">{{ ui_section('collections')->field('subtitle:'.app()->getLocale()) }}</p>
             </div>
             <div class="row g-4">
-                @foreach($categories->take(4) as $category)
-                    <div class="col-md-6 col-lg-3 animate-fade-in-up stagger-{{ $category->id }}">
+                @foreach($categories as $category)
+                    <div class="col-md-4 col-lg-2 animate-fade-in-up stagger-{{ $category->id }}">
                         <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}?category_id={{ $category->id }}" class="category-card d-block">
                             <div class="category-card-bg" style="background-image: url('{{ $category->getFirstMediaUrl() }}')"></div>
                             <div class="category-card-overlay"></div>
@@ -73,10 +73,10 @@
     <section class="luxury-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Featured</span>
-                <h2 class="section-title">Featured Collections</h2>
+                <span class="section-label">{{ __('Featured') }}</span>
+                <h2 class="section-title">{{ ui_section('featured')->field('title:'.app()->getLocale()) }}</h2>
                 <div class="gold-divider"></div>
-                <p class="section-subtitle">Handpicked selections from our finest range</p>
+                <p class="section-subtitle">{{ ui_section('featured')->field('subtitle:'.app()->getLocale()) }}</p>
             </div>
             <div class="row g-4">
                 <!-- Product 1 -->
@@ -154,7 +154,7 @@
                                 <i class="bi bi-star-fill star"></i>
                                 <i class="bi bi-star-fill star"></i>
                                 <i class="bi bi-star-fill star empty"></i>
-                                <span class="count>(73)</span>
+                                <span class="count">(73)</span>
               </div>
               <div class="product-card-price">
                                 <span class="current">$240.00</span>
@@ -194,7 +194,7 @@
             </div>
             <div class="text-center mt-5">
                 <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" class="btn-outline-gold">
-                    <span>View All Products</span>
+                    <span>{{ __('View All Products') }}</span>
                     <i class="bi bi-arrow-{{ Locales::getDir() == 'ltr' ? 'right' : 'left' }}"></i>
                 </a>
             </div>
@@ -205,15 +205,15 @@
     <section class="luxury-section">
         <div class="container">
             <div class="featured-banner animate-fade-in-up">
-                <div class="featured-banner-bg"></div>
+                <div class="featured-banner-bg" style="background-image: url('{{ ui_section('limited_edition')->field('background')->getUrl() }}')"></div>
                 <div class="featured-banner-content">
-                    <span class="section-label">Limited Edition</span>
-                    <h2 class="mb-3">Midnight<br><span class="text-shimmer">Jasmine</span> Collection</h2>
+                    <span class="section-label">{{ __('Limited Edition') }}</span>
+                    <h2 class="mb-3">{{ ui_section('limited_edition')->field('title:'.app()->getLocale()) }}</h2>
                     <p class="mb-4" style="color: var(--text-muted); font-weight: 300;">
-                        An exclusive release of only 500 bottles worldwide. A mesmerizing blend of jasmine, sandalwood, and rare vanilla absolute.
+                        {{ ui_section('limited_edition')->field('subtitle:'.app()->getLocale()) }}
                     </p>
-                    <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="btn-gold">
-                        <span>Shop Now</span>
+                    <a href="{{ ui_section('limited_edition')->field('link') }}" class="btn-gold">
+                        <span>{{ __('Shop Now') }}</span>
                         <i class="bi bi-arrow-{{ Locales::getDir() == 'ltr' ? 'right' : 'left' }}"></i>
                     </a>
                 </div>
