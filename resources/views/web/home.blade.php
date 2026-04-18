@@ -79,118 +79,11 @@
                 <p class="section-subtitle">{{ ui_section('featured')->field('subtitle:'.app()->getLocale()) }}</p>
             </div>
             <div class="row g-4">
-                <!-- Product 1 -->
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-1">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/perfume1/500/600.jpg" alt="Rose Noir Eau de Parfum">
-                            <span class="product-badge badge-new">New</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Perfumes</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Rose Noir Eau de Parfum</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <span class="count">(48)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$185.00</span>
-                            </div>
-                        </div>
+                @foreach($featuredProducts as $product)
+                    <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-1">
+                        @include('web.partials.product', ['product' => $product])
                     </div>
-                </div>
-                <!-- Product 2 -->
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-2">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/lipstick1/500/600.jpg" alt="Velvet Rouge Lipstick">
-                            <span class="product-badge badge-best">Best Seller</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Makeup</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Velvet Rouge Lipstick</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-half star"></i>
-                                <span class="count">(126)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$65.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 3 -->
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-3">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/perfume2/500/600.jpg" alt="Amber Oud Concentrate">
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Perfumes</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Amber Oud Concentrate</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star empty"></i>
-                                <span class="count">(73)</span>
-              </div>
-              <div class="product-card-price">
-                                <span class="current">$240.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 4 -->
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-4">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/foundation1/500/600.jpg" alt="Silk Glow Foundation">
-                            <span class="product-badge badge-sale">Sale</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Makeup</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Silk Glow Foundation</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <span class="count">(89)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$78.00</span>
-                                <span class="old">$110.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="text-center mt-5">
                 <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" class="btn-outline-gold">
@@ -225,120 +118,17 @@
     <section class="luxury-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Most Loved</span>
-                <h2 class="section-title">Best Sellers</h2>
+                <span class="section-label">{{ __('most_loved') }}</span>
+                <h2 class="section-title">{{ ui_section('most_loved')->field('title:'.app()->getLocale()) }}</h2>
                 <div class="gold-divider"></div>
-                <p class="section-subtitle">The pieces our clients can't stop buying</p>
+                <p class="section-subtitle">{{ ui_section('most_loved')->field('subtitle:'.app()->getLocale()) }}</p>
             </div>
             <div class="row g-4">
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-1">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/bestseller1/500/600.jpg" alt="Golden Hour Body Oil">
-                            <span class="product-badge badge-best">Best Seller</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Body Care</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Golden Hour Body Oil</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <span class="count">(204)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$95.00</span>
-                            </div>
-                        </div>
+                @foreach($mostLovedProducts as $product)
+                    <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-1">
+                        @include('web.partials.product', ['product' => $product])
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-2">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/bestseller2/500/600.jpg" alt="Saffron Musk Eau de Toilette">
-                            <span class="product-badge badge-best">Best Seller</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Perfumes</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Saffron Musk Eau de Toilette</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-half star"></i>
-                                <span class="count">(167)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$155.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-3">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/bestseller3/500/600.jpg" alt="Pearl Glow Highlighter">
-                            <span class="product-badge badge-best">Best Seller</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Makeup</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Pearl Glow Highlighter</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <span class="count">(312)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$52.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 animate-fade-in-up stagger-4">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="https://picsum.photos/seed/bestseller4/500/600.jpg" alt="Oud Wood Body Cream">
-                            <span class="product-badge badge-best">Best Seller</span>
-                            <div class="product-card-actions">
-                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}" class="product-card-action-btn">Quick View</a>
-                                <button class="product-card-action-btn icon-only"><i class="bi bi-heart"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-card-body">
-                            <span class="product-card-category">Body Care</span>
-                            <h4 class="product-card-title"><a href="{{ LaravelLocalization::getLocalizedURL(url: '/product') }}">Oud Wood Body Cream</a></h4>
-                            <div class="product-card-rating">
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star empty"></i>
-                                <span class="count">(91)</span>
-                            </div>
-                            <div class="product-card-price">
-                                <span class="current">$72.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

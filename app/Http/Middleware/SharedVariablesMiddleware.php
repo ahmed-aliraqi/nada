@@ -31,6 +31,9 @@ class SharedVariablesMiddleware
                 'featuredProducts' => Cache::remember('featured_products', now()->hours(2), function () {
                     return Product::query()->inRandomOrder()->limit(4)->get();
                 }),
+                'featuredProducts' => Cache::remember('featured_products', now()->hours(2), function () {
+                    return Product::query()->inRandomOrder()->limit(4)->get();
+                }),
                 'mostLovedProducts' => Cache::remember('most_loved_products', now()->hours(2), function () {
                     return Product::query()->inRandomOrder()->limit(4)->get();
                 }),

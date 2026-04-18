@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,6 @@ Route::prefix('dashboard')
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->group(function () {
+        Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
         Route::get('{view?}', WebController::class)->name('web.view');
     });
