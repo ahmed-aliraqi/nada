@@ -57,6 +57,11 @@ return [
                 'subtitle:ar' => 'Subtitle (Arabic)',
             ],
         ],
+        'chat_bot' => [
+            'attributes' => [
+                'code' => 'Code',
+            ],
+        ],
     ],
     'dialogs' => [
         'delete' => [

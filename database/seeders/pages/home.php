@@ -51,3 +51,9 @@ Ui::section('most_loved')
         'subtitle:ar' => 'القطع التي لا يستطيع عملاؤنا التوقف عن شرائها',
     ])->build();
 
+Ui::section('chat_bot')
+    ->setName('Chat Bot')
+    ->setFields([
+        'code' => '',
+    ])->build();
+

@@ -57,6 +57,11 @@ return [
                 'subtitle:ar' => 'العنوان الفرعي (عربي)',
             ],
         ],
+        'chat_bot' => [
+            'attributes' => [
+                'code' => 'كود الشات',
+            ],
+        ],
     ],
     'dialogs' => [
         'delete' => [

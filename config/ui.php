@@ -59,6 +59,13 @@ return [
                     'has_many_values' => false,
                     'group' => 'home',
                 ],
+                'chat_bot' => [
+                    'fields' => [
+                        'code' => \AhmedAliraqi\Ui\Fields\Textarea::class,
+                    ],
+                    'has_many_values' => false,
+                    'group' => 'home',
+                ],
             ],
         ],
     ],
