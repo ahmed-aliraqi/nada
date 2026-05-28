@@ -54,7 +54,7 @@
             <div class="row g-4">
                 @foreach($categories as $category)
                     <div class="col-md-4 col-lg-2 animate-fade-in-up stagger-{{ $category->id }}">
-                        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}?category_id={{ $category->name }}" class="category-card d-block">
+                        <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}?category={{ $category->name }}" class="category-card d-block">
                             <div class="category-card-bg" style="background-image: url('{{ $category->getFirstMediaUrl() }}')"></div>
                             <div class="category-card-overlay"></div>
                             <div class="category-card-content">
