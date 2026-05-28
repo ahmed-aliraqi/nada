@@ -6,165 +6,85 @@
         <div class="page-header-bg"></div>
         <div class="page-header-overlay"></div>
         <div class="page-header-content">
-            <span class="section-label">Get in Touch</span>
-            <h1>Contact Us</h1>
+            <span class="section-label">Our Story</span>
+            <h1>About Us</h1>
             <div class="breadcrumb-luxury">
-                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}">Home</a>
+                <a href="index.html">Home</a>
                 <span class="separator"><i class="bi bi-chevron-right"></i></span>
-                <span class="current">Contact</span>
+                <span class="current">About</span>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT INFO CARDS -->
-    <section class="luxury-section" style="padding-bottom: 0;">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3 animate-fade-in-up stagger-1">
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="bi bi-geo-alt"></i>
-                        </div>
-                        <div>
-                            <div class="contact-info-label">Visit Us</div>
-                            <div class="contact-info-value">Downtown Dubai<br>Sheikh Mohammed Blvd<br>Dubai, UAE</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 animate-fade-in-up stagger-2">
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="bi bi-telephone"></i>
-                        </div>
-                        <div>
-                            <div class="contact-info-label">Call Us</div>
-                            <div class="contact-info-value">+971 4 123 4567<br>+971 50 987 6543</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 animate-fade-in-up stagger-3">
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="bi bi-envelope"></i>
-                        </div>
-                        <div>
-                            <div class="contact-info-label">Email Us</div>
-                            <div class="contact-info-value">hello@beautystore.com<br>support@beautystore.com</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 animate-fade-in-up stagger-4">
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="bi bi-clock"></i>
-                        </div>
-                        <div>
-                            <div class="contact-info-label">Working Hours</div>
-                            <div class="contact-info-value">Sat – Thu: 10AM – 10PM<br>Friday: 2PM – 10PM</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT FORM + MAP -->
+    <!-- OUR STORY -->
     <section class="luxury-section">
         <div class="container">
-            <div class="row g-5">
-                <!-- Contact Form -->
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <span class="section-label">Send a Message</span>
-                    <h2 class="mb-2">We'd Love to<br>Hear From <span class="text-gold">You</span></h2>
-                    <div class="gold-divider-left" style="margin-bottom: 2rem;"></div>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.92rem;">
-                        Whether you have a question about our products, need a personalized recommendation, or want to share your experience — we're here for you.
-                    </p>
-                    <form onsubmit="return false;">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control-luxury" placeholder="Your first name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control-luxury" placeholder="Your last name">
-                                </div>
-                            </div>
+                    <div class="about-image-group">
+                        <div class="about-image-main">
+                            <img src="https://picsum.photos/seed/aboutmain/800/1000.jpg" alt="Beauty Store Atelier">
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control-luxury" placeholder="your@email.com">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control-luxury" placeholder="+1 (234) 567-890">
-                                </div>
-                            </div>
+                        <div class="about-image-secondary">
+                            <img src="https://picsum.photos/seed/aboutsec/600/500.jpg" alt="Perfume Crafting">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Subject</label>
-                            <select class="form-control-luxury" style="cursor:pointer;">
-                                <option value="" disabled selected style="color:var(--text-muted);">Select a topic</option>
-                                <option>Product Inquiry</option>
-                                <option>Order Support</option>
-                                <option>Fragrance Consultation</option>
-                                <option>Wholesale / Partnership</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Your Message</label>
-                            <textarea class="form-control-luxury" rows="5" placeholder="Tell us how we can help you..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-gold">
-                            <span>Send Message</span>
-                            <i class="bi bi-send"></i>
-                        </button>
-                    </form>
+                    </div>
                 </div>
-
-                <!-- Map / Store Image -->
                 <div class="col-lg-6">
-                    <div style="position: sticky; top: 100px;">
-                        <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); height: 400px; background: var(--bg-secondary); margin-bottom: 1.5rem;">
-                            <!-- Static map placeholder with luxury styling -->
-                            <div style="width:100%;height:100%;background-image:url('https://picsum.photos/seed/dubaimap/800/600.jpg');background-size:cover;background-position:center;filter:brightness(0.5) saturate(0.6);position:relative;">
-                                <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(44,31,37,0.3), rgba(44,31,37,0.7));display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                                    <div style="width:60px;height:60px;border-radius:50%;background:rgba(224,176,128,0.15);border:2px solid var(--accent-gold);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;" class="gold-glow">
-                                        <i class="bi bi-geo-alt-fill" style="font-size:1.4rem;color:var(--accent-gold);"></i>
-                                    </div>
-                                    <div style="font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Beauty Store</div>
-                                    <div style="font-size:0.85rem;color:var(--text-muted);text-align:center;">Downtown Dubai<br>Sheikh Mohammed Boulevard</div>
-                                    <a href="#" style="margin-top:1.2rem;padding:10px 28px;background:rgba(224,176,128,0.12);border:1px solid var(--border-gold);border-radius:var(--radius-xl);color:var(--accent-gold);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:var(--transition);">
-                                        <i class="bi bi-google"></i>
-                                        <span>Open in Google Maps</span>
-                                    </a>
+                    <span class="section-label">Established 2018</span>
+                    <h2 class="mb-3">Where Beauty<br>Meets <span class="text-gold">Artistry</span></h2>
+                    <div class="gold-divider-left"></div>
+                    <p class="mb-3">
+                        Beauty Store was born from a passion for the extraordinary. Founded in the heart of Dubai, we set out to create a sanctuary where the world's finest beauty products and fragrances could be discovered under one roof.
+                    </p>
+                    <p class="mb-3">
+                        Our journey began with a simple belief: that true luxury lies in the details — the sourcing of rare ingredients, the craftsmanship of artisan perfumers, and the meticulous curation of every product that bears our name.
+                    </p>
+                    <p class="mb-4">
+                        Today, we partner with over 50 prestigious brands and independent artisans from Grasse to Makkah, bringing you a collection that spans classic elegance and contemporary innovation.
+                    </p>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
+                                    <i class="bi bi-gem"></i>
+                                </div>
+                                <div>
+                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">250+</div>
+                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Premium Products</div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Quick contact cards -->
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem;text-align:center;transition:var(--transition);height:100%;">
-                                    <i class="bi bi-whatsapp" style="font-size:1.5rem;color:#25D366;margin-bottom:0.8rem;display:block;"></i>
-                                    <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">WhatsApp</div>
-                                    <div style="font-size:0.78rem;color:var(--text-muted);">+971 50 987 6543</div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
+                                    <i class="bi bi-globe2"></i>
+                                </div>
+                                <div>
+                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">30+</div>
+                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Countries Served</div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem;text-align:center;transition:var(--transition);height:100%;">
-                                    <i class="bi bi-instagram" style="font-size:1.5rem;color:var(--accent-gold);margin-bottom:0.8rem;display:block;"></i>
-                                    <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Instagram</div>
-                                    <div style="font-size:0.78rem;color:var(--text-muted);">@beautystore</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div>
+                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">15K+</div>
+                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Happy Clients</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
+                                    <i class="bi bi-award"></i>
+                                </div>
+                                <div>
+                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">7</div>
+                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Years of Excellence</div>
                                 </div>
                             </div>
                         </div>
@@ -174,67 +94,204 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
+    <!-- OUR VALUES -->
     <section class="luxury-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Help Center</span>
-                <h2 class="section-title">Frequently Asked Questions</h2>
+                <span class="section-label">Philosophy</span>
+                <h2 class="section-title">Our Values</h2>
                 <div class="gold-divider"></div>
-                <p class="section-subtitle">Quick answers to common questions</p>
+                <p class="section-subtitle">The principles that guide every decision we make</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-droplet-half"></i>
+                        </div>
+                        <h4>Pure Ingredients</h4>
+                        <p>We source only the finest natural extracts and essences, ensuring every product meets our uncompromising standards of purity.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                        </div>
+                        <h4>Artisan Craft</h4>
+                        <p>Every fragrance and formula is crafted by master artisans who pour decades of expertise into each creation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-recycle"></i>
+                        </div>
+                        <h4>Sustainable Luxury</h4>
+                        <p>Luxury and responsibility coexist. We use eco-friendly packaging and support ethical sourcing practices worldwide.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <h4>Client First</h4>
+                        <p>Your satisfaction is our obsession. From personalized recommendations to white-glove delivery, you are always our priority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="luxury-section">
+        <div class="container">
+            <div class="featured-banner animate-fade-in-up" style="min-height: 350px;">
+                <div class="featured-banner-bg" style="background-image: url('https://picsum.photos/seed/experiencebanner/800/600.jpg');"></div>
+                <div class="featured-banner-content">
+                    <span class="section-label">The Experience</span>
+                    <h2 class="mb-3">More Than<br>a <span class="text-shimmer">Store</span></h2>
+                    <p class="mb-4" style="color: var(--text-muted); font-weight: 300;">
+                        Step into our world of sensory discovery. From personalized fragrance consultations to exclusive preview events, every interaction with Beauty Store is designed to be memorable.
+                    </p>
+                    <a href="contact.html" class="btn-gold">
+                        <span>Get in Touch</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM / STORY TIMELINE -->
+    <section class="luxury-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Milestones</span>
+                <h2 class="section-title">Our Journey</h2>
+                <div class="gold-divider"></div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <!-- FAQ Item 1 -->
-                    <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem 2rem;margin-bottom:12px;transition:var(--transition);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
-                            <h4 style="font-size:1rem;font-weight:600;margin:0;">How long does shipping take?</h4>
-                            <i class="bi bi-plus-lg" style="color:var(--accent-gold);font-size:0.9rem;flex-shrink:0;margin-left:1rem;"></i>
+                    <!-- Timeline -->
+                    <div style="position: relative; padding-left: 40px;">
+                        <!-- Line -->
+                        <div style="position:absolute;left:14px;top:0;bottom:0;width:1px;background:linear-gradient(180deg, var(--accent-gold), var(--border-gold), transparent);"></div>
+
+                        <!-- Item 1 -->
+                        <div style="position:relative;margin-bottom:3rem;" class="animate-fade-in-up stagger-1">
+                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
+                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2018</div>
+                            <h4 style="margin-bottom:6px;">The Beginning</h4>
+                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">Beauty Store opened its doors in Dubai with a curated collection of 50 premium fragrances from the world's finest perfume houses.</p>
                         </div>
-                        <p style="color:var(--text-muted);font-size:0.9rem;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--border-color);">
-                            Domestic orders within the UAE are delivered within 1–2 business days. International shipping typically takes 5–10 business days depending on the destination. All orders include tracking information.
-                        </p>
-                    </div>
-                    <!-- FAQ Item 2 -->
-                    <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem 2rem;margin-bottom:12px;transition:var(--transition);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
-                            <h4 style="font-size:1rem;font-weight:600;margin:0;">Can I get a fragrance sample before buying?</h4>
-                            <i class="bi bi-plus-lg" style="color:var(--accent-gold);font-size:0.9rem;flex-shrink:0;margin-left:1rem;"></i>
+
+                        <!-- Item 2 -->
+                        <div style="position:relative;margin-bottom:3rem;" class="animate-fade-in-up stagger-2">
+                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
+                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2020</div>
+                            <h4 style="margin-bottom:6px;">Expanding Horizons</h4>
+                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">Launched our makeup line and body care collection, partnering with artisan brands from France, Italy, and the Middle East.</p>
                         </div>
-                        <p style="color:var(--text-muted);font-size:0.9rem;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--border-color);">
-                            Yes! We offer a sample program where you can order up to 3 sample vials for a nominal fee. The cost is fully redeemable against a full-size purchase.
-                        </p>
-                    </div>
-                    <!-- FAQ Item 3 -->
-                    <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem 2rem;margin-bottom:12px;transition:var(--transition);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
-                            <h4 style="font-size:1rem;font-weight:600;margin:0;">What is your return policy?</h4>
-                            <i class="bi bi-plus-lg" style="color:var(--accent-gold);font-size:0.9rem;flex-shrink:0;margin-left:1rem;"></i>
+
+                        <!-- Item 3 -->
+                        <div style="position:relative;margin-bottom:3rem;" class="animate-fade-in-up stagger-3">
+                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
+                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2022</div>
+                            <h4 style="margin-bottom:6px;">Going Global</h4>
+                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">Expanded shipping to over 30 countries. Reached 10,000 loyal clients and launched our exclusive Niche Naturals collection.</p>
                         </div>
-                        <p style="color:var(--text-muted);font-size:0.9rem;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--border-color);">
-                            Unopened products can be returned within 14 days of delivery. For hygiene reasons, opened makeup and perfumes cannot be returned unless they arrive damaged or defective.
-                        </p>
-                    </div>
-                    <!-- FAQ Item 4 -->
-                    <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem 2rem;margin-bottom:12px;transition:var(--transition);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
-                            <h4 style="font-size:1rem;font-weight:600;margin:0;">Do you offer gift wrapping?</h4>
-                            <i class="bi bi-plus-lg" style="color:var(--accent-gold);font-size:0.9rem;flex-shrink:0;margin-left:1rem;"></i>
+
+                        <!-- Item 4 -->
+                        <div style="position:relative;" class="animate-fade-in-up stagger-4">
+                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
+                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2025</div>
+                            <h4 style="margin-bottom:6px;">The Future</h4>
+                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">With 250+ products, 50+ brand partners, and 15,000 happy clients, we continue to push the boundaries of luxury beauty.</p>
                         </div>
-                        <p style="color:var(--text-muted);font-size:0.9rem;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--border-color);">
-                            Absolutely. We offer complimentary luxury gift wrapping on all orders. You can also add a personalized message card during checkout.
-                        </p>
                     </div>
-                    <!-- FAQ Item 5 -->
-                    <div style="background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:1.5rem 2rem;transition:var(--transition);">
-                        <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
-                            <h4 style="font-size:1rem;font-weight:600;margin:0;">Do you ship internationally?</h4>
-                            <i class="bi bi-plus-lg" style="color:var(--accent-gold);font-size:0.9rem;flex-shrink:0;margin-left:1rem;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="luxury-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Love Letters</span>
+                <h2 class="section-title">Words From Our Clients</h2>
+                <div class="gold-divider"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
                         </div>
-                        <p style="color:var(--text-muted);font-size:0.9rem;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--border-color);">
-                            Yes, we ship to over 30 countries worldwide. Shipping rates and delivery times vary by location. All international orders are carefully packaged to ensure safe arrival.
-                        </p>
+                        <p class="testimonial-text">"Beauty Store changed how I think about fragrance. Every bottle tells a story, and the team helps you find yours."</p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/abavatar1/100/100.jpg" alt="Nora A." class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Nora A.</div>
+                                <div class="testimonial-role">Loyal Client Since 2019</div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
+                        </div>
+                        <p class="testimonial-text">"The quality is unmatched. I've ordered from Beauty Store dozens of times and every experience has been flawless."</p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/abavatar2/100/100.jpg" alt="Diana L." class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Diana L.</div>
+                                <div class="testimonial-role">Verified Buyer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-half star"></i>
+                        </div>
+                        <p class="testimonial-text">"Their niche collection introduced me to fragrances I never knew existed. A true gem of a store."</p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/abavatar3/100/100.jpg" alt="Marcus T." class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Marcus T.</div>
+                                <div class="testimonial-role">Fragrance Enthusiast</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="luxury-section newsletter-section">
+        <div class="newsletter-bg"></div>
+        <div class="container">
+            <div class="newsletter-content animate-fade-in-up">
+                <span class="section-label">Ready to Explore?</span>
+                <h2 class="mb-3">Discover Your Signature Scent</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                    Browse our collection and find the fragrance that defines you.
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="/shop" class="btn-gold">
+                        <span>{{ __('Shop Now') }}</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                    <a href="/contact" class="btn-outline-gold">
+                        <span>{{ __('Contact Us') }}</span>
+                    </a>
                 </div>
             </div>
         </div>

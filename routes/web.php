@@ -31,6 +31,12 @@ Route::prefix('dashboard')
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->group(function () {
+        Route::get('shop', [ProductController::class, 'index'])->name('products.index');
         Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
-        Route::get('{view?}', WebController::class)->name('web.view');
+
+        $views = collect(glob(resource_path('views/web/*.blade.php')))->map(function ($path) {
+            return str($path)->classBasename()->replaceLast('.blade.php', '')->toString();
+        })->unique()->values()->toArray();
+
+        Route::get('{view?}', WebController::class)->name('web.view')->whereIn('view', $views);
     });

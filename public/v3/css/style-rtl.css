@@ -2514,3 +2514,140 @@ input.gallery-radio { display: none; }
     .order-section-body { padding: 1.5rem; }
     .tab-btn { padding: 0.8rem 1rem; font-size: 0.72rem; }
 }
+
+/* ============================================
+   TRENDORA — Custom Pagination
+   ============================================ */
+
+.trendora-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem 0 1rem;
+}
+
+.trendora-pagination .pagination-info {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.trendora-pagination .pagination-info strong {
+    color: var(--rose-gold);
+    font-weight: 600;
+}
+
+.trendora-pagination .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.4rem;
+}
+
+.trendora-pagination .page-item .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 0 !important;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.trendora-pagination .page-item .page-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-135deg, var(--rose-gold), var(--rose-gold-dark));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+}
+
+.trendora-pagination .page-item .page-link span,
+.trendora-pagination .page-link {
+    position: relative;
+    z-index: 1;
+}
+
+.trendora-pagination .page-item:hover:not(.disabled):not(.active) .page-link {
+    border-color: var(--rose-gold);
+    color: var(--primary-bg);
+    box-shadow: 0 0 15px var(--rose-glow);
+    transform: translateY(-2px);
+}
+
+.trendora-pagination .page-item:hover:not(.disabled):not(.active) .page-link::before {
+    opacity: 1;
+}
+
+/* Active Page */
+.trendora-pagination .page-item.active .page-link {
+    background: linear-gradient(-135deg, var(--rose-gold), var(--rose-gold-dark));
+    border-color: var(--rose-gold);
+    color: var(--primary-bg) !important;
+    font-weight: 700;
+    box-shadow: 0 0 20px var(--rose-glow), 0 0 40px rgba(232, 180, 162, 0.12);
+}
+
+/* Disabled */
+.trendora-pagination .page-item.disabled .page-link {
+    border-color: var(--border-subtle);
+    color: var(--text-muted);
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.trendora-pagination .page-item.disabled .page-link::before {
+    display: none;
+}
+
+/* Dots Separator */
+.trendora-pagination .page-item.disabled .page-link {
+    border-color: transparent;
+    background: transparent;
+    opacity: 0.6;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+/* Prev/Next Arrow Styling */
+.trendora-pagination .page-item .page-link[aria-label] {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+/* Mobile: stacked */
+@media (max-width: 575.98px) {
+    .trendora-pagination {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .trendora-pagination .page-item .page-link {
+        min-width: 38px;
+        height: 38px;
+        font-size: 0.8rem;
+    }
+}

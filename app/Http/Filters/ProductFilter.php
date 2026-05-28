@@ -3,6 +3,7 @@
 namespace App\Http\Filters;
 
 use AhmedAliraqi\LaravelFilterable\BaseFilter;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProductFilter extends BaseFilter
 {
@@ -16,6 +17,8 @@ class ProductFilter extends BaseFilter
      */
     protected array $filters = [
         'name',
+        'category',
+        'sort',
         'selected_id',
     ];
 
@@ -25,6 +28,40 @@ class ProductFilter extends BaseFilter
     protected function name(mixed $value): void
     {
         $this->builder->whereTranslationLike('name', "%$value%");
+    }
+
+    /**
+     * Apply a filter to the query based on the "category" field.
+     */
+    protected function category(mixed $value): void
+    {
+        $this->builder->where(function (Builder $builder) use ($value) {
+            $builder->whereHas('category', function ($query) use ($value) {
+                $query->whereTranslationLike('name', "%$value%");
+            });
+            $builder->orWhere('category_id', $value);
+        });
+    }
+
+    /**
+     * Apply a filter to the query based on the "sort" field.
+     */
+    protected function sort(mixed $value): void
+    {
+        switch ($value) {
+            case 'price_low_high':
+                $this->builder->oldest('price');
+                break;
+            case 'price_high_low':
+                $this->builder->latest('price');
+                break;
+            case 'oldest':
+                $this->builder->oldest('id');
+                break;
+            default:
+                $this->builder->latest('id');
+                break;
+        }
     }
 
     /**
