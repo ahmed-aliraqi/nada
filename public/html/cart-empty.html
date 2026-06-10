@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart — Beauty Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        @keyframes floatSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.9); opacity: 0.4; }
+            50% { transform: scale(1.15); opacity: 0; }
+            100% { transform: scale(0.9); opacity: 0; }
+        }
+        .empty-state {
+            text-align: center;
+            padding: 5rem 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .empty-icon-wrap {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2.5rem;
+            animation: floatSoft 4s ease-in-out infinite;
+        }
+        .empty-icon-ring {
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 1px solid var(--border-gold);
+            animation: pulseRing 3s ease-out infinite;
+        }
+        .empty-icon-ring:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .empty-icon-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(224,176,128,0.08), rgba(224,176,128,0.02));
+            border: 1px solid var(--border-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        .empty-icon-circle i {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0.7;
+        }
+        .empty-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+        .empty-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 380px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .empty-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+        .empty-divider {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, transparent, var(--border-gold), transparent);
+            margin: 0 auto 2.5rem;
+        }
+        .empty-suggestions-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .empty-suggest-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+        .empty-suggest-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card), var(--shadow-gold);
+            border-color: var(--border-gold);
+        }
+        .empty-suggest-img {
+            height: 220px;
+            overflow: hidden;
+            background: var(--bg-tertiary);
+        }
+        .empty-suggest-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .empty-suggest-card:hover .empty-suggest-img img {
+            transform: scale(1.08);
+        }
+        .empty-suggest-body {
+            padding: 1.2rem 1.4rem;
+        }
+        .empty-suggest-cat {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .empty-suggest-name {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .empty-suggest-price {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        @media (max-width: 575.98px) {
+            .empty-state { padding: 3rem 1rem; }
+            .empty-icon-wrap { width: 110px; height: 110px; margin-bottom: 2rem; }
+            .empty-icon-circle { width: 110px; height: 110px; }
+            .empty-icon-circle i { font-size: 2.2rem; }
+            .empty-suggest-img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-luxury">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-luxury" href="index.html">Beauty <span>Store</span></a>
+        <div class="d-flex align-items-center gap-3 d-lg-none order-lg-last">
+            <div class="lang-switcher"><span class="active-lang">EN</span><span class="divider">|</span><span>AR</span></div>
+            <a href="cart.html" class="nav-icon-btn"><i class="bi bi-bag"></i></a>
+            <button class="navbar-toggler-luxury" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span></span><span></span><span></span></button>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="contact.html">Contact</a></li>
+            </ul>
+            <div class="d-flex align-items-center gap-3 d-none d-lg-flex">
+                <div class="lang-switcher"><span class="active-lang">EN</span><span class="divider">|</span><span>AR</span></div>
+                <a href="cart.html" class="nav-icon-btn"><i class="bi bi-bag"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="page-header" style="padding-bottom: 40px;">
+    <div class="page-header-bg"></div>
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+        <span class="section-label">Your Selection</span>
+        <h1>Shopping Cart</h1>
+        <div class="breadcrumb-luxury">
+            <a href="index.html">Home</a>
+            <span class="separator"><i class="bi bi-chevron-right"></i></span>
+            <span class="current">Cart</span>
+        </div>
+    </div>
+</section>
+
+<section class="luxury-section" style="padding-top: 20px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+
+                <div class="empty-state">
+                    <div class="empty-icon-wrap">
+                        <div class="empty-icon-ring"></div>
+                        <div class="empty-icon-ring"></div>
+                        <div class="empty-icon-circle">
+                            <i class="bi bi-bag-x"></i>
+                        </div>
+                    </div>
+
+                    <h2 class="empty-title">Your Cart is Empty</h2>
+                    <p class="empty-desc">
+                        Looks like you haven't added any products yet. Explore our collection and find something you love.
+                    </p>
+
+                    <div class="empty-actions">
+                        <a href="shop.html" class="btn-gold">
+                            <span>Explore Collection</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="index.html" class="btn-outline-gold">
+                            <span>Back to Home</span>
+                        </a>
+                    </div>
+
+                    <div class="empty-divider"></div>
+
+                    <div class="empty-suggestions-label">
+                        <i class="bi bi-sparkles" style="color:var(--accent-gold);margin-right:4px;"></i>
+                        Popular Right Now
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-sm-4">
+                            <a href="product.html" class="empty-suggest-card d-block">
+                                <div class="empty-suggest-img">
+                                    <img src="https://picsum.photos/seed/emptysug1/400/400.jpg" alt="Rose Noir">
+                                </div>
+                                <div class="empty-suggest-body">
+                                    <div class="empty-suggest-cat">Perfumes</div>
+                                    <div class="empty-suggest-name">Rose Noir Eau de Parfum</div>
+                                    <div class="empty-suggest-price">$185.00</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="product.html" class="empty-suggest-card d-block">
+                                <div class="empty-suggest-img">
+                                    <img src="https://picsum.photos/seed/emptysug2/400/400.jpg" alt="Saffron Musk">
+                                </div>
+                                <div class="empty-suggest-body">
+                                    <div class="empty-suggest-cat">Perfumes</div>
+                                    <div class="empty-suggest-name">Saffron Musk Eau de Toilette</div>
+                                    <div class="empty-suggest-price">$155.00</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="product.html" class="empty-suggest-card d-block">
+                                <div class="empty-suggest-img">
+                                    <img src="https://picsum.photos/seed/emptysug3/400/400.jpg" alt="Velvet Rouge">
+                                </div>
+                                <div class="empty-suggest-body">
+                                    <div class="empty-suggest-cat">Makeup</div>
+                                    <div class="empty-suggest-name">Velvet Rouge Lipstick</div>
+                                    <div class="empty-suggest-price">$45.00</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-luxury">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <div class="footer-brand">Beauty <span>Store</span></div>
+                <p class="footer-desc">A sanctuary of luxury beauty and fragrances. We curate the finest products from around the world for the discerning individual.</p>
+                <div class="footer-social mt-3">
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-2"><h6 class="footer-heading">Shop</h6><ul class="footer-links"><li><a href="shop.html">Perfumes</a></li><li><a href="shop.html">Makeup</a></li><li><a href="shop.html">Body Care</a></li><li><a href="shop.html">Gift Sets</a></li></ul></div>
+            <div class="col-6 col-lg-2"><h6 class="footer-heading">Company</h6><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="col-6 col-lg-2"><h6 class="footer-heading">Support</h6><ul class="footer-links"><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li></ul></div>
+            <div class="col-6 col-lg-2"><h6 class="footer-heading">Contact</h6><ul class="footer-links"><li><a href="mailto:hello@beautystore.com">hello@beautystore.com</a></li><li><a href="#">Dubai, UAE</a></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start"><p>&copy; 2025 Beauty Store. All rights reserved.</p></div>
+                <div class="col-md-6 text-center text-md-end"><p>Crafted with <span class="text-gold">&hearts;</span> for beauty lovers</p></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

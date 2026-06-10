@@ -6,6 +6,7 @@ mix.js([
   'resources/js/adminlte3/adminlte3.js',
   'resources/js/adminlte3/adminlte3-auth.js'
 ], 'public/js').vue();
+mix.js('resources/js/app.js', 'public/js').vue();
 mix.sass('resources/sass/adminlte3/adminlte3.scss', 'public/css');
 mix.sass('resources/sass/adminlte3/adminlte3-auth.scss', 'public/css');
 

@@ -1,14 +1,15 @@
 {
-    "/js/adminlte3.js": "/js/adminlte3.js?id=8a8ef74b56febd4e6341d0efa1463003",
-    "/js/vali.js": "/js/vali.js?id=e58acadfa7f16336831ca0e2ea817583",
-    "/css/adminlte3.css": "/css/adminlte3.css?id=9007e086f7043ce475dfd2363bc263d5",
-    "/css/vali.css": "/css/vali.css?id=67110cf3fffcecaeeecbfac195b7c486",
-    "/css/adminlte3-auth.css": "/css/adminlte3-auth.css?id=5167253bdfa342e2b5dbc72eee6e118c",
+    "/js/adminlte3.js": "/js/adminlte3.js?id=ab548a03cbb98c4e62ce98c085701d79",
+    "/js/app.js": "/js/app.js?id=5c0a7da40dccb46494e05d90ce4e6ebe",
+    "/js/vali.js": "/js/vali.js?id=071dd55a382ebf726a7497a3da16b52a",
+    "/css/adminlte3.css": "/css/adminlte3.css?id=523e7f0f67b52e6757936926411fcbdb",
+    "/css/vali.css": "/css/vali.css?id=88362b87d1e68f1721e220010643681c",
+    "/css/adminlte3-auth.css": "/css/adminlte3-auth.css?id=88c4a9871b8e2c62d010c122916aa2e8",
     "/js/adminlte3-auth.js": "/js/adminlte3-auth.js?id=352d0ff3b7a833487f4db0d6e3d8058e",
     "/js/adminlte3-auth.js.LICENSE.txt": "/js/adminlte3-auth.js.LICENSE.txt?id=5ede2719371994d77c01c394ad069c35",
     "/js/adminlte3.js.LICENSE.txt": "/js/adminlte3.js.LICENSE.txt?id=d86ec2427769230fcb0a4d52ef064db2",
     "/js/vali.js.LICENSE.txt": "/js/vali.js.LICENSE.txt?id=bd99164fa4bd1fc1a524a6098a923ad8",
-    "/css/adminlte3-auth.rtl.css": "/css/adminlte3-auth.rtl.css?id=122b38042003488d46314e9745663c4a",
-    "/css/adminlte3.rtl.css": "/css/adminlte3.rtl.css?id=9a415c83ec7142053afce0bfa08e4780",
-    "/css/vali.rtl.css": "/css/vali.rtl.css?id=caf0d7896dca39f5904cbfd9a9480acf"
+    "/css/adminlte3-auth.rtl.css": "/css/adminlte3-auth.rtl.css?id=8b5a726a436152c63700c4b386be7cda",
+    "/css/adminlte3.rtl.css": "/css/adminlte3.rtl.css?id=b1370556f65b53858c577b36991528a5",
+    "/css/vali.rtl.css": "/css/vali.rtl.css?id=9b86ce1e3dcaaf79733f738647e3525d"
 }

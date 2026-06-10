@@ -8,6 +8,8 @@ use App\Excel\Exportable;
 use App\Excel\Importable;
 use App\Http\Filters\ProductFilter;
 use App\Models\Concerns\HasMediaConversions;
+use App\Models\Concerns\PurchasableTrait;
+use App\Models\Contracts\Purchasable;
 use App\Models\Translations\CategoryTranslation;
 use App\Support\Traits\Selectable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
@@ -21,7 +23,7 @@ use Illuminate\Validation\Rule;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Product extends Model implements Exportable, Importable, TranslatableContract, HasMedia
+class Product extends Model implements Exportable, Importable, TranslatableContract, HasMedia, Purchasable
 {
     use Filterable;
     use HasFactory;
@@ -31,6 +33,7 @@ class Product extends Model implements Exportable, Importable, TranslatableContr
     use InteractsWithMedia;
     use HasUploader;
     use HasMediaConversions;
+    use PurchasableTrait;
 
     /**
      * The filter class used for querying this model.
@@ -76,7 +79,12 @@ class Product extends Model implements Exportable, Importable, TranslatableContr
 
     public function getPriceWithCurrency(): string
     {
-        return sprintf('%s %.2f', config('app.currency'), number_format($this->price, 2));
+        return sprintf('%s %.2f', config('app.currency'), number_format($this->getPrice(), 2));
+    }
+
+    public function getPurchasablePrice(): float
+    {
+        return $this->getPrice();
     }
 
     /**

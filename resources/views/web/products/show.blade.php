@@ -93,28 +93,7 @@
                             {!! $product->description !!}
                         </p>
 
-                        <!-- Quantity -->
-                        <div style="display:flex; align-items:center; gap:20px; margin-bottom:2rem; flex-wrap:wrap;">
-                            <div class="variant-label" style="margin-bottom:0;">{{ __('Quantity') }}</div>
-                            <div class="quantity-selector" style="margin-bottom:0;">
-                                <button class="quantity-btn">−</button>
-                                <input type="text" class="quantity-input" value="1" readonly>
-                                <button class="quantity-btn">+</button>
-                            </div>
-{{--                            <span style="font-size:0.82rem;color:var(--text-muted);">Only 12 left in stock</span>--}}
-                        </div>
-
-                        <!-- Action buttons -->
-                        <div style="display:flex;gap:12px;margin-bottom:2rem;flex-wrap:wrap;">
-                            <a href="{{ LaravelLocalization::getLocalizedURL(url: '/cart') }}" class="btn-gold" style="flex:1;min-width:200px;justify-content:center;">
-                                <span>{{ __('Add to Cart') }}</span>
-                                <i class="bi bi-bag"></i>
-                            </a>
-                            <button class="btn-outline-gold" style="flex:1;min-width:180px;justify-content:center;">
-                                <i class="bi bi-lightning"></i>
-                                <span>{{ __('Buy Now') }}</span>
-                            </button>
-                        </div>
+                        <v-add-to-cart product-id="{{ $product->id }}"></v-add-to-cart>
 
                     </div><!-- /sticky -->
                 </div><!-- /col -->

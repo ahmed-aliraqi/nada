@@ -25,7 +25,9 @@ class SetApplicationLocale
 
         $locale = $request->header('x-accept-language') ?: request()->query('language', $locale);
 
-        if (in_array($locale, array_keys(config('locales.languages')))) {
+
+
+        if (in_array($locale, collect(config('locales.languages'))->map->value->toArray())) {
             app()->setLocale($locale);
             Carbon::setLocale($locale);
         }

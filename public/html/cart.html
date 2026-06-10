@@ -1,143 +1,955 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart | TRENDORA</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Shopping Cart — Beauty Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        /* ============================================================
+           CART PAGE — Specific Styles
+           ============================================================ */
+
+        /* Cart item row */
+        .cart-item {
+            display: grid;
+            grid-template-columns: 90px 1fr auto auto auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeInUp 0.5s ease-out both;
+        }
+        .cart-item:nth-child(1) { animation-delay: 0.05s; }
+        .cart-item:nth-child(2) { animation-delay: 0.1s; }
+        .cart-item:nth-child(3) { animation-delay: 0.15s; }
+        .cart-item:nth-child(4) { animation-delay: 0.2s; }
+
+        .cart-item-image {
+            width: 90px;
+            height: 90px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            flex-shrink: 0;
+        }
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .cart-item-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .cart-item-info {
+            min-width: 0;
+        }
+        .cart-item-category {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .cart-item-name {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .cart-item-name a {
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+        .cart-item-name a:hover {
+            color: var(--accent-gold);
+        }
+        .cart-item-variant {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cart-item-variant .variant-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid var(--border-gold);
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .cart-item-price-col {
+            text-align: right;
+            min-width: 90px;
+        }
+        .cart-item-price {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        .cart-item-price-old {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            display: block;
+        }
+
+        /* Quantity in cart */
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 40px;
+        }
+        .cart-qty-btn {
+            width: 36px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .cart-qty-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+        .cart-qty-input {
+            width: 42px;
+            height: 100%;
+            text-align: center;
+            background: var(--bg-tertiary);
+            border: none;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 500;
+            outline: none;
+        }
+
+        /* Remove button */
+        .cart-remove-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .cart-remove-btn:hover {
+            border-color: rgba(192, 85, 79, 0.3);
+            background: rgba(192, 85, 79, 0.08);
+            color: #E07A75;
+            transform: rotate(90deg);
+        }
+
+        /* Cart summary card */
+        .cart-summary-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: sticky;
+            top: 100px;
+        }
+        .cart-summary-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .cart-summary-header h3 {
+            font-size: 1.15rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cart-summary-header .item-count {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            background: rgba(224, 176, 128, 0.12);
+            color: var(--accent-gold);
+            padding: 3px 10px;
+            border-radius: var(--radius-xl);
+            letter-spacing: 0.05em;
+        }
+        .cart-summary-body {
+            padding: 1.8rem 2rem;
+        }
+
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .cart-summary-row .label {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+        .cart-summary-row .value {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .cart-summary-row .value.free {
+            color: #6FCF97;
+            font-weight: 600;
+        }
+        .cart-summary-row .value.discount {
+            color: #6FCF97;
+        }
+
+        .cart-summary-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 16px 0;
+        }
+
+        .cart-summary-row.total {
+            margin-bottom: 0;
+        }
+        .cart-summary-row.total .label {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .cart-summary-row.total .value {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .cart-summary-footer {
+            padding: 0 2rem 2rem;
+        }
+
+        /* Coupon input */
+        .coupon-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .coupon-input {
+            flex: 1;
+            padding: 11px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        .coupon-input::placeholder {
+            color: var(--text-muted);
+        }
+        .coupon-input:focus {
+            border-color: var(--accent-gold);
+        }
+        .coupon-btn {
+            padding: 11px 20px;
+            background: transparent;
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-sm);
+            color: var(--accent-gold);
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .coupon-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        /* Saved message */
+        .coupon-applied {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(111, 207, 151, 0.06);
+            border: 1px solid rgba(111, 207, 151, 0.2);
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: #6FCF97;
+        }
+        .coupon-applied i {
+            font-size: 0.9rem;
+        }
+        .coupon-remove {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 2px;
+        }
+        .coupon-remove:hover {
+            color: #E07A75;
+        }
+
+        /* Secure note */
+        .secure-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        /* Cart header bar */
+        .cart-header-bar {
+            display: grid;
+            grid-template-columns: 90px 1fr auto auto auto;
+            gap: 1.5rem;
+            padding: 0 0 1rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 0.5rem;
+        }
+        .cart-header-bar span {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .cart-header-bar span:nth-child(3),
+        .cart-header-bar span:nth-child(4),
+        .cart-header-bar span:nth-child(5) {
+            text-align: right;
+        }
+
+        /* Empty cart */
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .empty-cart-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: rgba(224, 176, 128, 0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--text-muted);
+        }
+        .empty-cart h3 {
+            margin-bottom: 0.5rem;
+        }
+        .empty-cart p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Free shipping progress */
+        .shipping-progress {
+            margin-bottom: 1.5rem;
+        }
+        .shipping-progress-text {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .shipping-progress-text strong {
+            color: var(--accent-gold);
+        }
+        .shipping-progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .shipping-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .shipping-progress-complete {
+            font-size: 0.78rem;
+            color: #6FCF97;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Recommended mini cards */
+        .mini-recommend {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .mini-recommend:hover {
+            border-color: var(--border-gold);
+            background: rgba(224, 176, 128, 0.03);
+        }
+        .mini-recommend-img {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--bg-secondary);
+        }
+        .mini-recommend-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .mini-recommend-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .mini-recommend-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+        .mini-recommend-price {
+            font-size: 0.78rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        .mini-recommend-add {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-gold);
+            background: transparent;
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .mini-recommend-add:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 991.98px) {
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+            }
+            .cart-item-price-col,
+            .cart-quantity,
+            .cart-remove-btn {
+                grid-column: 2;
+            }
+            .cart-item-price-col {
+                margin-top: -0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .cart-item-price-old {
+                display: inline;
+                margin-left: 0;
+                margin-right: 4px;
+            }
+            .cart-header-bar {
+                display: none;
+            }
+            .cart-summary-card {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .cart-item {
+                grid-template-columns: 70px 1fr;
+                gap: 0.8rem;
+                padding: 1.2rem 0;
+            }
+            .cart-item-image {
+                width: 70px;
+                height: 70px;
+            }
+            .cart-item-name {
+                font-size: 0.95rem;
+            }
+            .coupon-wrapper {
+                flex-direction: column;
+            }
+            .cart-summary-body,
+            .cart-summary-footer {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            .cart-summary-header {
+                padding: 1.2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div id="loading-screen"><div class="loader-content"><div class="loader-spinner"></div><span class="brand-name">TRENDORA</span></div></div>
-<div class="page-wrapper">
-    <!-- Navbar -->
-    <nav class="navbar-main">
-        <div class="navbar-inner">
-            <a href="index.html" class="navbar-brand">
-                <div class="brand-icon">
-                    <img src="images/icon-h36.png" alt="">
-<!--                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--                        <circle cx="20" cy="20" r="18" stroke="#C9A96E" stroke-width="1.5"/>-->
-<!--                        <path d="M20 6 L20 34" stroke="#C9A96E" stroke-width="1.5"/>-->
-<!--                        <path d="M14 10 C14 10 20 14 20 20 C20 26 14 30 14 30" stroke="#C9A96E" stroke-width="1.5" fill="none"/>-->
-<!--                        <path d="M26 10 C26 10 20 14 20 20 C20 26 26 30 26 30" stroke="#C9A96E" stroke-width="1.5" fill="none"/>-->
-<!--                        <circle cx="20" cy="20" r="3" fill="#C9A96E"/>-->
-<!--                    </svg>-->
-                </div>
-                <span class="brand-text">TRENDORA</span>
-            </a>
-            <ul class="navbar-links">
-                <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-                <li><a href="shop.html" data-i18n="nav_shop">Shop</a></li>
-                <li><a href="about.html" data-i18n="nav_about">About</a></li>
-                <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-luxury">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-luxury" href="index.html">Beauty <span>Store</span></a>
+        <div class="d-flex align-items-center gap-3 d-lg-none order-lg-last">
+            <div class="lang-switcher"><span class="active-lang">EN</span><span class="divider">|</span><span>AR</span></div>
+            <a href="cart.html" class="nav-icon-btn"><i class="bi bi-bag"></i><span class="badge-dot"></span></a>
+            <button class="navbar-toggler-luxury" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span></span><span></span><span></span></button>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-luxury" href="contact.html">Contact</a></li>
             </ul>
-            <div class="navbar-actions">
-                <button class="nav-action-btn theme-toggle-btn" title="Toggle theme"><i class="bi bi-moon"></i></button>
-                <button class="nav-action-btn lang-btn" title="Switch language">AR</button>
-                <a href="cart.html" class="nav-action-btn" title="Cart">
-                    <i class="bi bi-bag"></i>
-                    <span class="cart-badge d-none" id="cart-badge">0</span>
-                </a>
-                <div class="mobile-toggle"><span></span><span></span><span></span></div>
-            </div>
-        </div>
-    </nav>
-    <div class="mobile-menu">
-        <a href="index.html" data-i18n="nav_home">Home</a>
-        <a href="shop.html" data-i18n="nav_shop">Shop</a>
-        <a href="about.html" data-i18n="nav_about">About</a>
-        <a href="contact.html" data-i18n="nav_contact">Contact</a>
-        <a href="cart.html"><i class="bi bi-bag"></i> <span data-i18n="nav_shop">Cart</span></a>
-    </div>
-
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="container-custom">
-            <h1 data-i18n="cart_title">Shopping Cart</h1>
-            <p data-i18n="cart_desc">Review your items before checkout</p>
-            <div class="breadcrumb">
-                <a href="index.html" data-i18n="breadcrumb_home">Home</a>
-                <span>/</span>
-                <span data-i18n="cart_title">Cart</span>
+            <div class="d-flex align-items-center gap-3 d-none d-lg-flex">
+                <div class="lang-switcher"><span class="active-lang">EN</span><span class="divider">|</span><span>AR</span></div>
+                <a href="cart.html" class="nav-icon-btn"><i class="bi bi-bag"></i><span class="badge-dot"></span></a>
             </div>
         </div>
     </div>
+</nav>
 
-    <!-- Cart Content -->
-    <section class="section">
-        <div class="container-custom">
-            <div style="display:grid;grid-template-columns:1fr 380px;gap:30px;align-items:start;" class="cart-grid">
-                <div id="cart-items-container"></div>
-                <div id="cart-summary-container"></div>
-            </div>
+<!-- PAGE HEADER -->
+<section class="page-header" style="padding-bottom: 40px;">
+    <div class="page-header-bg"></div>
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+        <span class="section-label">Your Selection</span>
+        <h1>Shopping Cart</h1>
+        <div class="breadcrumb-luxury">
+            <a href="index.html">Home</a>
+            <span class="separator"><i class="bi bi-chevron-right"></i></span>
+            <span class="current">Cart</span>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container-custom">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-text">TRENDORA</span>
-                    <p data-i18n="footer_desc">Your destination for premium beauty products and luxurious fragrances. Discover elegance with every purchase.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"><i class="bi bi-tiktok"></i></a>
+<!-- CART CONTENT -->
+<section class="luxury-section" style="padding-top: 20px;">
+    <div class="container">
+        <div class="row g-5">
+            <!-- ===== CART ITEMS ===== -->
+            <div class="col-lg-8">
+
+                <!-- Column headers (desktop) -->
+                <div class="cart-header-bar d-none d-lg-grid">
+                    <span>Product</span>
+                    <span></span>
+                    <span>Price</span>
+                    <span>Qty</span>
+                    <span></span>
+                </div>
+
+                <!-- Item 1 -->
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <a href="product.html">
+                            <img src="https://picsum.photos/seed/cartitem1/200/200.jpg" alt="Rose Noir Eau de Parfum">
+                        </a>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-category">Perfumes</div>
+                        <div class="cart-item-name"><a href="product.html">Rose Noir Eau de Parfum</a></div>
+                        <div class="cart-item-variant">
+                            <span class="variant-dot" style="background:#1a1a1a;"></span>
+                            100ml — Eau de Parfum
+                        </div>
+                    </div>
+                    <div class="cart-item-price-col">
+                        <span class="cart-item-price">$185.00</span>
+                    </div>
+                    <div class="cart-quantity">
+                        <button class="cart-qty-btn">−</button>
+                        <input type="text" class="cart-qty-input" value="1" readonly>
+                        <button class="cart-qty-btn">+</button>
+                    </div>
+                    <button class="cart-remove-btn"><i class="bi bi-x-lg"></i></button>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <a href="product.html">
+                            <img src="https://picsum.photos/seed/cartitem2/200/200.jpg" alt="Velvet Rouge Lipstick">
+                        </a>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-category">Makeup</div>
+                        <div class="cart-item-name"><a href="product.html">Velvet Rouge Lipstick</a></div>
+                        <div class="cart-item-variant">
+                            <span class="variant-dot" style="background:#8B1A2B;"></span>
+                            Shade: Crimson Velvet — 3.5g
+                        </div>
+                    </div>
+                    <div class="cart-item-price-col">
+                        <span class="cart-item-price-old">$65.00</span>
+                        <span class="cart-item-price">$45.00</span>
+                    </div>
+                    <div class="cart-quantity">
+                        <button class="cart-qty-btn">−</button>
+                        <input type="text" class="cart-qty-input" value="2" readonly>
+                        <button class="cart-qty-btn">+</button>
+                    </div>
+                    <button class="cart-remove-btn"><i class="bi bi-x-lg"></i></button>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <a href="product.html">
+                            <img src="https://picsum.photos/seed/cartitem3/200/200.jpg" alt="Golden Hour Body Oil">
+                        </a>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-category">Body Care</div>
+                        <div class="cart-item-name"><a href="product.html">Golden Hour Body Oil</a></div>
+                        <div class="cart-item-variant">
+                            <span class="variant-dot" style="background:#C89460;"></span>
+                            120ml — Warm Glow
+                        </div>
+                    </div>
+                    <div class="cart-item-price-col">
+                        <span class="cart-item-price">$95.00</span>
+                    </div>
+                    <div class="cart-quantity">
+                        <button class="cart-qty-btn">−</button>
+                        <input type="text" class="cart-qty-input" value="1" readonly>
+                        <button class="cart-qty-btn">+</button>
+                    </div>
+                    <button class="cart-remove-btn"><i class="bi bi-x-lg"></i></button>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <a href="product.html">
+                            <img src="https://picsum.photos/seed/cartitem4/200/200.jpg" alt="Pearl Glow Highlighter">
+                        </a>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-category">Makeup</div>
+                        <div class="cart-item-name"><a href="product.html">Pearl Glow Highlighter</a></div>
+                        <div class="cart-item-variant">
+                            <span class="variant-dot" style="background:#F0D0A8;"></span>
+                            Shade: Golden Pearl — 8g
+                        </div>
+                    </div>
+                    <div class="cart-item-price-col">
+                        <span class="cart-item-price-old">$52.00</span>
+                        <span class="cart-item-price">$38.00</span>
+                    </div>
+                    <div class="cart-quantity">
+                        <button class="cart-qty-btn">−</button>
+                        <input type="text" class="cart-qty-input" value="1" readonly>
+                        <button class="cart-qty-btn">+</button>
+                    </div>
+                    <button class="cart-remove-btn"><i class="bi bi-x-lg"></i></button>
+                </div>
+
+                <!-- Continue shopping -->
+                <div style="padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <a href="shop.html" class="btn-outline-gold btn-sm-gold">
+                        <i class="bi bi-arrow-left"></i>
+                        <span>Continue Shopping</span>
+                    </a>
+                    <button style="background:none;border:none;color:var(--text-muted);font-size:0.82rem;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:6px;font-family:var(--font-sans);padding:8px 0;" onmouseover="this.style.color='#E07A75'" onmouseout="this.style.color='var(--text-muted)'">
+                        <i class="bi bi-trash3"></i>
+                        Clear Entire Cart
+                    </button>
+                </div>
+
+                <!-- Recommended products -->
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">
+                        <i class="bi bi-sparkles" style="color:var(--accent-gold);margin-right:4px;"></i>
+                        You Might Also Like
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-sm-6">
+                            <div class="mini-recommend">
+                                <div class="mini-recommend-img">
+                                    <img src="https://picsum.photos/seed/mini1/100/100.jpg" alt="Saffron Musk">
+                                </div>
+                                <div class="mini-recommend-info">
+                                    <div class="mini-recommend-name">Saffron Musk Eau de Toilette</div>
+                                    <div class="mini-recommend-price">$155.00</div>
+                                </div>
+                                <button class="mini-recommend-add"><i class="bi bi-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mini-recommend">
+                                <div class="mini-recommend-img">
+                                    <img src="https://picsum.photos/seed/mini2/100/100.jpg" alt="Oud Wood Cream">
+                                </div>
+                                <div class="mini-recommend-info">
+                                    <div class="mini-recommend-name">Oud Wood Body Cream</div>
+                                    <div class="mini-recommend-price">$72.00</div>
+                                </div>
+                                <button class="mini-recommend-add"><i class="bi bi-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mini-recommend">
+                                <div class="mini-recommend-img">
+                                    <img src="https://picsum.photos/seed/mini3/100/100.jpg" alt="Silk Glow Foundation">
+                                </div>
+                                <div class="mini-recommend-info">
+                                    <div class="mini-recommend-name">Silk Glow Foundation</div>
+                                    <div class="mini-recommend-price">$78.00</div>
+                                </div>
+                                <button class="mini-recommend-add"><i class="bi bi-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mini-recommend">
+                                <div class="mini-recommend-img">
+                                    <img src="https://picsum.photos/seed/mini4/100/100.jpg" alt="Rose Petal Hand Cream">
+                                </div>
+                                <div class="mini-recommend-info">
+                                    <div class="mini-recommend-name">Rose Petal Hand Cream</div>
+                                    <div class="mini-recommend-price">$28.00</div>
+                                </div>
+                                <button class="mini-recommend-add"><i class="bi bi-plus"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h5 data-i18n="footer_links">Quick Links</h5>
-                    <ul>
-                        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-                        <li><a href="shop.html" data-i18n="nav_shop">Shop</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">About</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5 data-i18n="footer_help">Help</h5>
-                    <ul>
-                        <li><a href="#" data-i18n="footer_faq">FAQ</a></li>
-                        <li><a href="#" data-i18n="footer_shipping">Shipping Info</a></li>
-                        <li><a href="#" data-i18n="footer_returns">Returns</a></li>
-                        <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5 data-i18n="footer_help">Help</h5>
-                    <ul>
-                        <li><a href="#" data-i18n="footer_terms">Terms of Service</a></li>
-                        <li><a href="#" data-i18n="footer_faq">FAQ</a></li>
-                        <li><a href="#" data-i18n="footer_returns">Returns</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
-                    </ul>
-                </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2025 TRENDORA. <span data-i18n="footer_rights">All rights reserved.</span>
+
+            <!-- ===== CART SUMMARY ===== -->
+            <div class="col-lg-4">
+                <div class="cart-summary-card">
+                    <div class="cart-summary-header">
+                        <h3>
+                            <i class="bi bi-receipt" style="color:var(--accent-gold);"></i>
+                            Order Summary
+                        </h3>
+                        <span class="item-count">4 Items</span>
+                    </div>
+                    <div class="cart-summary-body">
+
+                        <!-- Free shipping progress -->
+                        <div class="shipping-progress">
+                            <div class="shipping-progress-complete">
+                                <i class="bi bi-check-circle-fill"></i>
+                                You've qualified for free shipping!
+                            </div>
+                            <div class="shipping-progress-bar" style="margin-top:8px;">
+                                <div class="shipping-progress-fill" style="width:100%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Coupon -->
+                        <div class="coupon-wrapper">
+                            <input type="text" class="coupon-input" placeholder="Coupon code">
+                            <button class="coupon-btn">Apply</button>
+                        </div>
+                        <div class="coupon-applied">
+                            <i class="bi bi-tag-fill"></i>
+                            <span>Code <strong>BEAUTY15</strong> applied — 15% off</span>
+                            <button class="coupon-remove"><i class="bi bi-x"></i></button>
+                        </div>
+
+                        <!-- Rows -->
+                        <div class="cart-summary-row">
+                            <span class="label">Subtotal (5 items)</span>
+                            <span class="value">$408.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span class="label">Discount (15%)</span>
+                            <span class="value discount">−$61.20</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span class="label">Shipping</span>
+                            <span class="value free">FREE</span>
+                        </div>
+
+                        <div class="cart-summary-divider"></div>
+
+                        <div class="cart-summary-row total">
+                            <span class="label">Total</span>
+                            <span class="value">$346.80</span>
+                        </div>
+
+                        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:8px;text-align:right;">
+                            Including $46.13 of estimated tax
+                        </div>
+                    </div>
+
+                    <div class="cart-summary-footer">
+                        <a href="checkout.html" class="btn-gold w-100 justify-content-center" style="margin-bottom: 12px;">
+                            <span>Proceed to Checkout</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="checkout.html" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:0.82rem;font-weight:500;transition:var(--transition);text-align:center;" onmouseover="this.style.borderColor='var(--border-gold)';this.style.color='var(--accent-gold)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.color='var(--text-secondary)'">
+                            <i class="bi bi-paypal" style="font-size:1.1rem;"></i>
+                            <span>Pay with PayPal</span>
+                        </a>
+                        <div class="secure-note">
+                            <i class="bi bi-shield-lock"></i>
+                            Secure 256-bit SSL Encryption
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment methods accepted -->
+                <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);text-align:center;">
+                    <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">We Accept</div>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+                        <i class="bi bi-credit-card-2-front" style="font-size:1.4rem;color:var(--text-muted);"></i>
+                        <i class="bi bi-paypal" style="font-size:1.4rem;color:var(--text-muted);"></i>
+                        <i class="bi bi-apple" style="font-size:1.4rem;color:var(--text-muted);"></i>
+                        <i class="bi bi-google" style="font-size:1.4rem;color:var(--text-muted);"></i>
+                        <i class="bi bi-cash-stack" style="font-size:1.4rem;color:var(--text-muted);"></i>
+                    </div>
+                </div>
+
+                <!-- Gift message -->
+                <div style="margin-top:1rem;padding:1.2rem 1.5rem;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <i class="bi bi-gift" style="color:var(--accent-gold);font-size:1rem;"></i>
+                        <span style="font-size:0.85rem;font-weight:600;color:var(--text-primary);">Free Gift Wrapping</span>
+                    </div>
+                    <p style="font-size:0.8rem;color:var(--text-muted);margin:0;line-height:1.6;">
+                        All orders include complimentary luxury gift wrapping. Add a personal message during checkout.
+                    </p>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <button class="scroll-top"><i class="bi bi-chevron-up"></i></button>
-</div>
+<!-- FOOTER -->
+<footer class="footer-luxury">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <div class="footer-brand">Beauty <span>Store</span></div>
+                <p class="footer-desc">A sanctuary of luxury beauty and fragrances. We curate the finest products from around the world for the discerning individual.</p>
+                <div class="footer-social mt-3">
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Shop</h6>
+                <ul class="footer-links">
+                    <li><a href="shop.html">Perfumes</a></li>
+                    <li><a href="shop.html">Makeup</a></li>
+                    <li><a href="shop.html">Body Care</a></li>
+                    <li><a href="shop.html">Gift Sets</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Company</h6>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Support</h6>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="footer-heading">Contact</h6>
+                <ul class="footer-links">
+                    <li><a href="mailto:hello@beautystore.com">hello@beautystore.com</a></li>
+                    <li><a href="#">Dubai, UAE</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2025 Beauty Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>Crafted with <span class="text-gold">&hearts;</span> for beauty lovers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
-<style>
-    @media (max-width: 768px) {
-        .cart-grid { grid-template-columns: 1fr !important; }
-    }
-</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

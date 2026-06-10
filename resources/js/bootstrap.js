@@ -8,8 +8,11 @@ window._ = require('lodash');
 
 window.axios = require('axios');
 
+const lang = document.documentElement.lang.substr(0, 2);
+
 axios.defaults.withCredentials = true;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Accept-Language'] = lang;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

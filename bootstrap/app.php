@@ -23,6 +23,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'dashboard.locales',
         ]);
 
+        $middleware->appendToGroup('api', [
+            'api.locales',
+        ]);
+
         $middleware->appendToGroup('web', [
             \App\Http\Middleware\SharedVariablesMiddleware::class,
         ]);
@@ -30,6 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'dashboard.access' => DashboardAccessMiddleware::class,
             'dashboard.locales' => DashboardLocaleMiddleware::class,
+            'api.locales' => \App\Http\Middleware\SetApplicationLocale::class,
             'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
             'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
             'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
