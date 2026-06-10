@@ -6,9 +6,6 @@
             <a href="{{ route('products.show', $product) }}" class="product-card-action-btn">
                 {{ __('Quick View') }}
             </a>
-            <button class="product-card-action-btn icon-only">
-                <i class="bi bi-heart"></i>
-            </button>
         </div>
     </div>
     <div class="product-card-body">
@@ -18,14 +15,6 @@
                 {{ $product->name }}
             </a>
         </h4>
-        <div class="product-card-rating">
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <span class="count">(204)</span>
-        </div>
         <div class="product-card-price">
             <span class="current">{{ $product->getPriceWithCurrency() }}</span>
         </div>

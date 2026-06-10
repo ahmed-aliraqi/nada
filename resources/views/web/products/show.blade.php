@@ -68,21 +68,6 @@
                             {{ $product->name }}
                         </h1>
 
-                        <!-- Rating summary -->
-                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:1.5rem; flex-wrap:wrap;">
-                            <div style="display:flex; gap:3px;">
-                                <i class="bi bi-star-fill" style="color:var(--accent-gold);font-size:0.95rem;"></i>
-                                <i class="bi bi-star-fill" style="color:var(--accent-gold);font-size:0.95rem;"></i>
-                                <i class="bi bi-star-fill" style="color:var(--accent-gold);font-size:0.95rem;"></i>
-                                <i class="bi bi-star-fill" style="color:var(--accent-gold);font-size:0.95rem;"></i>
-                                <i class="bi bi-star-fill" style="color:var(--accent-gold);font-size:0.95rem;"></i>
-                            </div>
-                            <span style="font-size:0.85rem;color:var(--text-muted);">5.0 — 48 Reviews</span>
-                            <span style="font-size:0.82rem;color:#6FCF97;display:flex;align-items:center;gap:4px;">
-                <i class="bi bi-patch-check-fill"></i> {{ __('Verified') }}
-              </span>
-                        </div>
-
                         <!-- Price -->
                         <div style="margin-bottom:1.8rem;">
                             <span style="font-family:var(--font-serif);font-size:2.2rem;font-weight:700;color:var(--accent-gold);">{{ $product->getPriceWithCurrency() }}</span>

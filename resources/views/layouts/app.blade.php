@@ -131,11 +131,13 @@
                 <div class="col-6 col-lg-2">
                     <h6 class="footer-heading">{{ __('Shop') }}</h6>
                     <ul class="footer-links">
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Perfumes') }}</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Makeup') }}</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Body Care') }}</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Gift Sets') }}</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('New Arrivals') }}</a></li>
+                        @foreach($footerCategories as $category)
+                            <li>
+                                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}?category={{ urlencode($category->name) }}">
+                                    {{ $category->name }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2">
