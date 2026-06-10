@@ -33,7 +33,7 @@
                             <div class="hero-stat-label">{{ __('Products Count') }}</div>
                         </div>
                         <div>
-                            <div class="hero-stat-number">{{ count_formatted($customersCount)  }}+</div>
+                            <div class="hero-stat-number">{{ count_formatted($customersCount) }}+</div>
                             <div class="hero-stat-label">{{ __('Happy Clients') }}</div>
                         </div>
                     </div>
@@ -59,7 +59,6 @@
                             <div class="category-card-overlay"></div>
                             <div class="category-card-content">
                                 <h3>{{ $category->name }}</h3>
-                                <p>{{ $category->description }}</p>
                                 <div class="category-card-arrow"><i class="bi bi-arrow-{{ Locales::getDir() == 'ltr' ? 'right' : 'left' }}"></i></div>
                             </div>
                         </a>
@@ -94,7 +93,7 @@
         </div>
     </section>
 
-    <!-- ========== FEATURED BANNER ========== -->
+    <!-- ========== LIMITED EDITION BANNER ========== -->
     <section class="luxury-section">
         <div class="container">
             <div class="featured-banner animate-fade-in-up">
@@ -134,89 +133,61 @@
     </section>
 
     <!-- ========== TESTIMONIALS ========== -->
-    <section class="luxury-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Testimonials</span>
-                <h2 class="section-title">What Our Clients Say</h2>
-                <div class="gold-divider"></div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4 animate-fade-in-up stagger-1">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                        </div>
-                        <p class="testimonial-text">"The Rose Noir perfume is absolutely divine. It lasts all day and I receive compliments everywhere I go. Truly a luxury experience."</p>
-                        <div class="testimonial-author">
-                            <img src="https://picsum.photos/seed/avatar1/100/100.jpg" alt="Sophia M." class="testimonial-avatar">
-                            <div>
-                                <div class="testimonial-name">Sophia M.</div>
-                                <div class="testimonial-role">Verified Buyer</div>
-                            </div>
-                        </div>
-                    </div>
+    @php $testimonials = ui_section('testimonials'); @endphp
+    @if($testimonials->isNotEmpty())
+        <section class="luxury-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Testimonials</span>
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <div class="gold-divider"></div>
                 </div>
-                <div class="col-md-4 animate-fade-in-up stagger-2">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                        </div>
-                        <p class="testimonial-text">"I've tried many high-end brands, but Beauty Store's oriental collection is on another level. The packaging alone is a work of art."</p>
-                        <div class="testimonial-author">
-                            <img src="https://picsum.photos/seed/avatar2/100/100.jpg" alt="Layla K." class="testimonial-avatar">
-                            <div>
-                                <div class="testimonial-name">Layla K.</div>
-                                <div class="testimonial-role">Verified Buyer</div>
+                <div class="row g-4">
+                    @foreach($testimonials as $item)
+                        <div class="col-md-4 animate-fade-in-up">
+                            <div class="testimonial-card">
+                                <div class="testimonial-stars">
+                                    @for($s = 1; $s <= 5; $s++)
+                                        <i class="bi bi-star{{ $s <= (int)$item->field('stars') ? '-fill' : '' }} star"></i>
+                                    @endfor
+                                </div>
+                                <p class="testimonial-text">"{{ $item->field('text:'.app()->getLocale()) }}"</p>
+                                <div class="testimonial-author">
+                                    @if($item->field('avatar')->getUrl())
+                                        <img src="{{ $item->field('avatar')->getUrl() }}" alt="{{ $item->field('name') }}" class="testimonial-avatar">
+                                    @else
+                                        <div class="testimonial-avatar" style="background:var(--bg-tertiary);display:flex;align-items:center;justify-content:center;">
+                                            <i class="bi bi-person" style="color:var(--text-muted);font-size:1.2rem;"></i>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <div class="testimonial-name">{{ $item->field('name') }}</div>
+                                        <div class="testimonial-role">{{ $item->field('role:'.app()->getLocale()) }}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 animate-fade-in-up stagger-3">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-fill star"></i>
-                            <i class="bi bi-star-half star"></i>
-                        </div>
-                        <p class="testimonial-text">"The Silk Glow Foundation matches my skin perfectly. Lightweight yet full coverage. I'm officially obsessed with this brand."</p>
-                        <div class="testimonial-author">
-                            <img src="https://picsum.photos/seed/avatar3/100/100.jpg" alt="Emma R." class="testimonial-avatar">
-                            <div>
-                                <div class="testimonial-name">Emma R.</div>
-                                <div class="testimonial-role">Verified Buyer</div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <!-- ========== NEWSLETTER ========== -->
+    @php $newsletter = ui_section('newsletter'); @endphp
     <section class="luxury-section newsletter-section">
         <div class="newsletter-bg"></div>
         <div class="container">
             <div class="newsletter-content animate-fade-in-up">
-                <span class="section-label">Stay Connected</span>
-                <h2 class="mb-3">Join the Beauty Circle</h2>
+                <span class="section-label">{{ $newsletter->field('label:'.app()->getLocale()) }}</span>
+                <h2 class="mb-3">{{ $newsletter->field('title:'.app()->getLocale()) }}</h2>
                 <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    Be the first to know about new arrivals, exclusive offers, and beauty secrets.
+                    {{ $newsletter->field('subtitle:'.app()->getLocale()) }}
                 </p>
                 <form class="newsletter-form" onsubmit="return false;">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                    <input type="email" class="newsletter-input" placeholder="{{ __('Email Address') }}">
                     <button type="submit" class="btn-gold btn-sm-gold">
-                        <span>Subscribe</span>
+                        <span>{{ $newsletter->field('button:'.app()->getLocale()) }}</span>
                     </button>
                 </form>
             </div>

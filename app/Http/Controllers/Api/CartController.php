@@ -86,4 +86,20 @@ class CartController extends Controller
                 ->get()
         );
     }
+
+    public function setShipping(Request $request): JsonResponse
+    {
+        $request->validate([
+            'shipping_price' => 'required|numeric|min:0',
+        ]);
+
+        $token = $request->input('token', $request->header('x-cart-token'));
+
+        return response()->json(
+            app(CartManager::class)
+                ->fromToken($token)
+                ->setShippingPrice((float) $request->input('shipping_price'))
+                ->get()
+        );
+    }
 }

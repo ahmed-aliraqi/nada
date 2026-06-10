@@ -57,3 +57,49 @@ Ui::section('chat_bot')
         'code' => '',
     ])->build();
 
+Ui::section('testimonials')
+    ->setName('Testimonials')
+    ->setFields([
+        'name'    => 'Sophia M.',
+        'role:en' => 'Verified Buyer',
+        'role:ar' => 'مشترية موثقة',
+        'text:en' => 'The Rose Noir perfume is absolutely divine. It lasts all day and I receive compliments everywhere I go. Truly a luxury experience.',
+        'text:ar' => 'عطر روز نوار رائع تماماً. يدوم طوال اليوم وأتلقى المجاملات في كل مكان أذهب إليه. تجربة فاخرة حقيقية.',
+        'stars'   => 5,
+    ])->build();
+
+Ui::section('testimonials')
+    ->setName('Testimonials')
+    ->setFields([
+        'name'    => 'Layla K.',
+        'role:en' => 'Verified Buyer',
+        'role:ar' => 'مشترية موثقة',
+        'text:en' => "I've tried many high-end brands, but the oriental collection is on another level. The packaging alone is a work of art.",
+        'text:ar' => 'جربت كثيراً من العلامات التجارية الراقية، لكن المجموعة الشرقية على مستوى آخر. التغليف وحده تحفة فنية.',
+        'stars'   => 5,
+    ])->build();
+
+Ui::section('testimonials')
+    ->setName('Testimonials')
+    ->setFields([
+        'name'    => 'Emma R.',
+        'role:en' => 'Verified Buyer',
+        'role:ar' => 'مشترية موثقة',
+        'text:en' => 'Their niche collection introduced me to fragrances I never knew existed. A true gem of a store.',
+        'text:ar' => 'مجموعتهم المتخصصة عرّفتني على عطور لم أكن أعلم بوجودها. متجر جوهرة حقيقية.',
+        'stars'   => 5,
+    ])->build();
+
+Ui::section('newsletter')
+    ->setName('Newsletter')
+    ->setFields([
+        'label:en'    => 'Stay Connected',
+        'label:ar'    => 'ابقَ على تواصل',
+        'title:en'    => 'Join the Beauty Circle',
+        'title:ar'    => 'انضم إلى دائرة الجمال',
+        'subtitle:en' => 'Be the first to know about new arrivals, exclusive offers, and beauty secrets.',
+        'subtitle:ar' => 'كن أول من يعرف عن الوافدين الجدد والعروض الحصرية وأسرار الجمال.',
+        'button:en'   => 'Subscribe',
+        'button:ar'   => 'اشترك',
+    ])->build();
+

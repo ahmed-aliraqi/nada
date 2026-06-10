@@ -1,295 +1,211 @@
 @extends('layouts.app', ['title' => __('About')])
 
 @section('content')
-    <!-- PAGE HEADER -->
+
+    <!-- ========== PAGE HEADER ========== -->
     <section class="page-header">
         <div class="page-header-bg"></div>
         <div class="page-header-overlay"></div>
         <div class="page-header-content">
-            <span class="section-label">Our Story</span>
-            <h1>About Us</h1>
+            <span class="section-label">{{ ui_section('about_hero')->field('label:'.app()->getLocale()) }}</span>
+            <h1>{{ ui_section('about_hero')->field('title:'.app()->getLocale()) }}</h1>
             <div class="breadcrumb-luxury">
-                <a href="index.html">Home</a>
-                <span class="separator"><i class="bi bi-chevron-right"></i></span>
-                <span class="current">About</span>
+                <a href="{{ LaravelLocalization::getLocalizedURL(url: '/') }}">{{ __('Home') }}</a>
+                <span class="separator"><i class="bi bi-chevron-{{ app()->isLocale('ar') ? 'left' : 'right' }}"></i></span>
+                <span class="current">{{ __('About') }}</span>
             </div>
         </div>
     </section>
 
-    <!-- OUR STORY -->
+    <!-- ========== OUR STORY ========== -->
+    @php $story = ui_section('about_story'); @endphp
     <section class="luxury-section">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
                     <div class="about-image-group">
                         <div class="about-image-main">
-                            <img src="https://picsum.photos/seed/aboutmain/800/1000.jpg" alt="Beauty Store Atelier">
+                            <img src="{{ $story->field('image_main')->getUrl() ?: 'https://picsum.photos/seed/aboutmain/800/1000.jpg' }}"
+                                 alt="{{ $story->field('title:'.app()->getLocale()) }}">
                         </div>
                         <div class="about-image-secondary">
-                            <img src="https://picsum.photos/seed/aboutsec/600/500.jpg" alt="Perfume Crafting">
+                            <img src="{{ $story->field('image_secondary')->getUrl() ?: 'https://picsum.photos/seed/aboutsec/600/500.jpg' }}"
+                                 alt="{{ app_name() }}">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <span class="section-label">Established 2018</span>
-                    <h2 class="mb-3">Where Beauty<br>Meets <span class="text-gold">Artistry</span></h2>
+                    <span class="section-label">{{ $story->field('label:'.app()->getLocale()) }}</span>
+                    <h2 class="mb-3">{!! nl2br(e($story->field('title:'.app()->getLocale()))) !!}</h2>
                     <div class="gold-divider-left"></div>
-                    <p class="mb-3">
-                        Beauty Store was born from a passion for the extraordinary. Founded in the heart of Dubai, we set out to create a sanctuary where the world's finest beauty products and fragrances could be discovered under one roof.
-                    </p>
-                    <p class="mb-3">
-                        Our journey began with a simple belief: that true luxury lies in the details — the sourcing of rare ingredients, the craftsmanship of artisan perfumers, and the meticulous curation of every product that bears our name.
-                    </p>
-                    <p class="mb-4">
-                        Today, we partner with over 50 prestigious brands and independent artisans from Grasse to Makkah, bringing you a collection that spans classic elegance and contemporary innovation.
-                    </p>
+                    <p class="mb-3">{{ $story->field('paragraph_1:'.app()->getLocale()) }}</p>
+                    <p class="mb-3">{{ $story->field('paragraph_2:'.app()->getLocale()) }}</p>
+                    <p class="mb-4">{{ $story->field('paragraph_3:'.app()->getLocale()) }}</p>
                     <div class="row g-4">
-                        <div class="col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
-                                    <i class="bi bi-gem"></i>
+                        @foreach([1,2,3,4] as $i)
+                            @if($story->field("stat_{$i}_number"))
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
+                                            <i class="bi {{ $story->field("stat_{$i}_icon") }}"></i>
+                                        </div>
+                                        <div>
+                                            <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">
+                                                {{ $story->field("stat_{$i}_number") }}
+                                            </div>
+                                            <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">
+                                                {{ $story->field("stat_{$i}_label:".app()->getLocale()) }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">250+</div>
-                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Premium Products</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
-                                    <i class="bi bi-globe2"></i>
-                                </div>
-                                <div>
-                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">30+</div>
-                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Countries Served</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
-                                    <i class="bi bi-people"></i>
-                                </div>
-                                <div>
-                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">15K+</div>
-                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Happy Clients</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="value-icon" style="width:48px;height:48px;font-size:1rem;">
-                                    <i class="bi bi-award"></i>
-                                </div>
-                                <div>
-                                    <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--accent-gold);">7</div>
-                                    <div style="font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;">Years of Excellence</div>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- OUR VALUES -->
+    <!-- ========== OUR VALUES ========== -->
+    @php $values = ui_section('about_values'); @endphp
+    @php $valueItems = ui_section('about_value_items'); @endphp
     <section class="luxury-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Philosophy</span>
-                <h2 class="section-title">Our Values</h2>
+                <span class="section-label">{{ $values->field('label:'.app()->getLocale()) }}</span>
+                <h2 class="section-title">{{ $values->field('title:'.app()->getLocale()) }}</h2>
                 <div class="gold-divider"></div>
-                <p class="section-subtitle">The principles that guide every decision we make</p>
+                <p class="section-subtitle">{{ $values->field('subtitle:'.app()->getLocale()) }}</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-droplet-half"></i>
+                @foreach($valueItems as $item)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="bi {{ $item->field('icon') }}"></i>
+                            </div>
+                            <h4>{{ $item->field('title:'.app()->getLocale()) }}</h4>
+                            <p>{{ $item->field('description:'.app()->getLocale()) }}</p>
                         </div>
-                        <h4>Pure Ingredients</h4>
-                        <p>We source only the finest natural extracts and essences, ensuring every product meets our uncompromising standards of purity.</p>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                        </div>
-                        <h4>Artisan Craft</h4>
-                        <p>Every fragrance and formula is crafted by master artisans who pour decades of expertise into each creation.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-recycle"></i>
-                        </div>
-                        <h4>Sustainable Luxury</h4>
-                        <p>Luxury and responsibility coexist. We use eco-friendly packaging and support ethical sourcing practices worldwide.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <i class="bi bi-heart-pulse"></i>
-                        </div>
-                        <h4>Client First</h4>
-                        <p>Your satisfaction is our obsession. From personalized recommendations to white-glove delivery, you are always our priority.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
+    <!-- ========== EXPERIENCE BANNER ========== -->
+    @php $exp = ui_section('about_experience'); @endphp
     <section class="luxury-section">
         <div class="container">
             <div class="featured-banner animate-fade-in-up" style="min-height: 350px;">
-                <div class="featured-banner-bg" style="background-image: url('https://picsum.photos/seed/experiencebanner/800/600.jpg');"></div>
+                <div class="featured-banner-bg"
+                     style="background-image: url('{{ $exp->field('background')->getUrl() ?: 'https://picsum.photos/seed/experiencebanner/800/600.jpg' }}');"></div>
                 <div class="featured-banner-content">
-                    <span class="section-label">The Experience</span>
-                    <h2 class="mb-3">More Than<br>a <span class="text-shimmer">Store</span></h2>
+                    <span class="section-label">{{ $exp->field('label:'.app()->getLocale()) }}</span>
+                    <h2 class="mb-3">{{ $exp->field('title:'.app()->getLocale()) }}</h2>
                     <p class="mb-4" style="color: var(--text-muted); font-weight: 300;">
-                        Step into our world of sensory discovery. From personalized fragrance consultations to exclusive preview events, every interaction with Beauty Store is designed to be memorable.
+                        {{ $exp->field('description:'.app()->getLocale()) }}
                     </p>
-                    <a href="contact.html" class="btn-gold">
-                        <span>Get in Touch</span>
-                        <i class="bi bi-arrow-right"></i>
+                    <a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}" class="btn-gold">
+                        <span>{{ $exp->field('cta:'.app()->getLocale()) }}</span>
+                        <i class="bi bi-arrow-{{ Locales::getDir() == 'ltr' ? 'right' : 'left' }}"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TEAM / STORY TIMELINE -->
+    <!-- ========== JOURNEY TIMELINE ========== -->
+    @php $journey = ui_section('about_journey'); @endphp
+    @php $journeyItems = ui_section('about_journey_items'); @endphp
     <section class="luxury-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Milestones</span>
-                <h2 class="section-title">Our Journey</h2>
+                <span class="section-label">{{ $journey->field('label:'.app()->getLocale()) }}</span>
+                <h2 class="section-title">{{ $journey->field('title:'.app()->getLocale()) }}</h2>
                 <div class="gold-divider"></div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <!-- Timeline -->
-                    <div style="position: relative; padding-left: 40px;">
-                        <!-- Line -->
-                        <div style="position:absolute;left:14px;top:0;bottom:0;width:1px;background:linear-gradient(180deg, var(--accent-gold), var(--border-gold), transparent);"></div>
-
-                        <!-- Item 1 -->
-                        <div style="position:relative;margin-bottom:3rem;" class="animate-fade-in-up stagger-1">
-                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
-                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2018</div>
-                            <h4 style="margin-bottom:6px;">The Beginning</h4>
-                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">Beauty Store opened its doors in Dubai with a curated collection of 50 premium fragrances from the world's finest perfume houses.</p>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div style="position:relative;margin-bottom:3rem;" class="animate-fade-in-up stagger-2">
-                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
-                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2020</div>
-                            <h4 style="margin-bottom:6px;">Expanding Horizons</h4>
-                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">Launched our makeup line and body care collection, partnering with artisan brands from France, Italy, and the Middle East.</p>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div style="position:relative;margin-bottom:3rem;" class="animate-fade-in-up stagger-3">
-                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
-                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2022</div>
-                            <h4 style="margin-bottom:6px;">Going Global</h4>
-                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">Expanded shipping to over 30 countries. Reached 10,000 loyal clients and launched our exclusive Niche Naturals collection.</p>
-                        </div>
-
-                        <!-- Item 4 -->
-                        <div style="position:relative;" class="animate-fade-in-up stagger-4">
-                            <div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
-                            <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">2025</div>
-                            <h4 style="margin-bottom:6px;">The Future</h4>
-                            <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">With 250+ products, 50+ brand partners, and 15,000 happy clients, we continue to push the boundaries of luxury beauty.</p>
-                        </div>
+                    <div style="position:relative;padding-{{ app()->isLocale('ar') ? 'right' : 'left' }}:40px;">
+                        <div style="position:absolute;{{ app()->isLocale('ar') ? 'right' : 'left' }}:14px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--accent-gold),var(--border-gold),transparent);"></div>
+                        @foreach($journeyItems as $index => $item)
+                            <div style="position:relative;margin-bottom:{{ $loop->last ? '0' : '3rem' }};" class="animate-fade-in-up stagger-{{ $index + 1 }}">
+                                <div style="position:absolute;{{ app()->isLocale('ar') ? 'right' : 'left' }}:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent-gold);box-shadow:0 0 15px rgba(224,176,128,0.4);"></div>
+                                <div style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:6px;">
+                                    {{ $item->field('year') }}
+                                </div>
+                                <h4 style="margin-bottom:6px;">{{ $item->field('title:'.app()->getLocale()) }}</h4>
+                                <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;">
+                                    {{ $item->field('description:'.app()->getLocale()) }}
+                                </p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="luxury-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Love Letters</span>
-                <h2 class="section-title">Words From Our Clients</h2>
-                <div class="gold-divider"></div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
-                        </div>
-                        <p class="testimonial-text">"Beauty Store changed how I think about fragrance. Every bottle tells a story, and the team helps you find yours."</p>
-                        <div class="testimonial-author">
-                            <img src="https://picsum.photos/seed/abavatar1/100/100.jpg" alt="Nora A." class="testimonial-avatar">
-                            <div>
-                                <div class="testimonial-name">Nora A.</div>
-                                <div class="testimonial-role">Loyal Client Since 2019</div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ========== TESTIMONIALS ========== -->
+    @php $testimonials = ui_section('testimonials'); @endphp
+    @if($testimonials->isNotEmpty())
+        <section class="luxury-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Love Letters</span>
+                    <h2 class="section-title">Words From Our Clients</h2>
+                    <div class="gold-divider"></div>
                 </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>
-                        </div>
-                        <p class="testimonial-text">"The quality is unmatched. I've ordered from Beauty Store dozens of times and every experience has been flawless."</p>
-                        <div class="testimonial-author">
-                            <img src="https://picsum.photos/seed/abavatar2/100/100.jpg" alt="Diana L." class="testimonial-avatar">
-                            <div>
-                                <div class="testimonial-name">Diana L.</div>
-                                <div class="testimonial-role">Verified Buyer</div>
+                <div class="row g-4">
+                    @foreach($testimonials as $item)
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <div class="testimonial-stars">
+                                    @for($s = 1; $s <= 5; $s++)
+                                        <i class="bi bi-star{{ $s <= (int)$item->field('stars') ? '-fill' : '' }} star"></i>
+                                    @endfor
+                                </div>
+                                <p class="testimonial-text">"{{ $item->field('text:'.app()->getLocale()) }}"</p>
+                                <div class="testimonial-author">
+                                    @if($item->field('avatar')->getUrl())
+                                        <img src="{{ $item->field('avatar')->getUrl() }}" alt="{{ $item->field('name') }}" class="testimonial-avatar">
+                                    @else
+                                        <div class="testimonial-avatar" style="background:var(--bg-tertiary);display:flex;align-items:center;justify-content:center;">
+                                            <i class="bi bi-person" style="color:var(--text-muted);font-size:1.2rem;"></i>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <div class="testimonial-name">{{ $item->field('name') }}</div>
+                                        <div class="testimonial-role">{{ $item->field('role:'.app()->getLocale()) }}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i class="bi bi-star-half star"></i>
-                        </div>
-                        <p class="testimonial-text">"Their niche collection introduced me to fragrances I never knew existed. A true gem of a store."</p>
-                        <div class="testimonial-author">
-                            <img src="https://picsum.photos/seed/abavatar3/100/100.jpg" alt="Marcus T." class="testimonial-avatar">
-                            <div>
-                                <div class="testimonial-name">Marcus T.</div>
-                                <div class="testimonial-role">Fragrance Enthusiast</div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
-    <!-- CTA -->
+    <!-- ========== CTA ========== -->
+    @php $cta = ui_section('about_cta'); @endphp
     <section class="luxury-section newsletter-section">
         <div class="newsletter-bg"></div>
         <div class="container">
             <div class="newsletter-content animate-fade-in-up">
-                <span class="section-label">Ready to Explore?</span>
-                <h2 class="mb-3">Discover Your Signature Scent</h2>
+                <span class="section-label">{{ $cta->field('label:'.app()->getLocale()) }}</span>
+                <h2 class="mb-3">{{ $cta->field('title:'.app()->getLocale()) }}</h2>
                 <p style="color: var(--text-muted); margin-bottom: 2rem;">
-                    Browse our collection and find the fragrance that defines you.
+                    {{ $cta->field('subtitle:'.app()->getLocale()) }}
                 </p>
                 <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="/shop" class="btn-gold">
+                    <a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}" class="btn-gold">
                         <span>{{ __('Shop Now') }}</span>
-                        <i class="bi bi-arrow-right"></i>
+                        <i class="bi bi-arrow-{{ Locales::getDir() == 'ltr' ? 'right' : 'left' }}"></i>
                     </a>
-                    <a href="/contact" class="btn-outline-gold">
+                    <a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}" class="btn-outline-gold">
                         <span>{{ __('Contact Us') }}</span>
                     </a>
                 </div>

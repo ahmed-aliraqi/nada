@@ -28,8 +28,6 @@ export default {
         },
 
         async updateQuantity({ dispatch, state }, payload) {
-
-            console.log(payload)
             if (payload.quantity > 0) {
                 const res = await axios.post("/api/cart/add", {
                     product_id: payload.productId,
@@ -38,10 +36,8 @@ export default {
                 });
 
                 dispatch("sync", res);
-            }
-
-            else {
-                dispatch('remove', payload.productId)
+            } else {
+                dispatch('remove', payload.productId);
             }
         },
 
@@ -57,6 +53,15 @@ export default {
         async clear({ dispatch, state }) {
             const res = await axios.delete("/api/cart/clear", {
                 data: { token: state.cart.token },
+            });
+
+            dispatch("sync", res);
+        },
+
+        async setShipping({ dispatch, state }, shippingPrice) {
+            const res = await axios.post("/api/cart/shipping", {
+                shipping_price: shippingPrice,
+                token: state.cart.token,
             });
 
             dispatch("sync", res);

@@ -3533,3 +3533,41 @@ textarea.delivery-form-input {
         grid-template-columns: 1fr;
     }
 }
+
+.cart-field-error {
+    display: block;
+    color: #E07A75;
+    font-size: 0.78rem;
+    margin-top: 4px;
+}
+
+.delivery-form-input.is-invalid {
+    border-color: #E07A75 !important;
+}
+
+.track-order-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-xl);
+    color: var(--accent-gold);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.track-order-btn:hover,
+.track-order-btn.active {
+    background: rgba(224, 176, 128, 0.12);
+    color: var(--accent-gold);
+}
+
+.track-order-btn i {
+    font-size: 0.85rem;
+}

@@ -74,8 +74,19 @@
                             {{ __('Contact') }}
                         </a>
                     </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link nav-link-luxury{{ request()->segment(2) === 'track-order' ? ' active' : '' }}"
+                           href="{{ LaravelLocalization::getLocalizedURL(url: '/track-order') }}">
+                            <i class="bi bi-box-seam me-1"></i>{{ __('Track Order') }}
+                        </a>
+                    </li>
                 </ul>
                 <div class="d-flex align-items-center gap-3 d-none d-lg-flex">
+                    <a href="{{ LaravelLocalization::getLocalizedURL(url: '/track-order') }}"
+                       class="track-order-btn{{ request()->segment(2) === 'track-order' ? ' active' : '' }}">
+                        <i class="bi bi-box-seam"></i>
+                        <span>{{ __('Track Order') }}</span>
+                    </a>
                     <div class="lang-switcher">
                         <a rel="alternate"  hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
                             <span class="{{ app()->getLocale() == 'en' ? 'active-lang' : '' }}">EN</span>
@@ -93,65 +104,76 @@
     </nav>
     @yield('content')
     <!-- ========== FOOTER ========== -->
+    @php $footer = ui_section('footer'); @endphp
     <footer class="footer-luxury">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-4">
                     <div class="footer-brand">{{ app_name() }}</div>
                     <p class="footer-desc">
-                        A sanctuary of luxury beauty and fragrances. We curate the finest products from around the world for the discerning individual.
+                        {{ $footer->field('description:'.app()->getLocale()) }}
                     </p>
                     <div class="footer-social mt-3">
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"><i class="bi bi-pinterest"></i></a>
+                        @if($footer->field('instagram'))
+                            <a href="{{ $footer->field('instagram') }}"><i class="bi bi-instagram"></i></a>
+                        @endif
+                        @if($footer->field('facebook'))
+                            <a href="{{ $footer->field('facebook') }}"><i class="bi bi-facebook"></i></a>
+                        @endif
+                        @if($footer->field('twitter'))
+                            <a href="{{ $footer->field('twitter') }}"><i class="bi bi-twitter-x"></i></a>
+                        @endif
+                        @if($footer->field('pinterest'))
+                            <a href="{{ $footer->field('pinterest') }}"><i class="bi bi-pinterest"></i></a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <h6 class="footer-heading">Shop</h6>
+                    <h6 class="footer-heading">{{ __('Shop') }}</h6>
                     <ul class="footer-links">
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Perfumes</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Makeup</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Body Care</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">Gift Sets</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">New Arrivals</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Perfumes') }}</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Makeup') }}</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Body Care') }}</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('Gift Sets') }}</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/shop') }}">{{ __('New Arrivals') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <h6 class="footer-heading">Company</h6>
+                    <h6 class="footer-heading">{{ __('Company') }}</h6>
                     <ul class="footer-links">
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}">About Us</a></li>
-                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}">Contact</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/about') }}">{{ __('About Us') }}</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}">{{ __('Contact') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <h6 class="footer-heading">Support</h6>
+                    <h6 class="footer-heading">{{ __('Support') }}</h6>
                     <ul class="footer-links">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/track-order') }}">{{ __('Track Your Order') }}</a></li>
+                        <li><a href="{{ LaravelLocalization::getLocalizedURL(url: '/contact') }}">{{ __('FAQ') }}</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <h6 class="footer-heading">Contact</h6>
+                    <h6 class="footer-heading">{{ __('Contact') }}</h6>
                     <ul class="footer-links">
-                        <li><a href="mailto:hello@beautystore.com">hello@beautystore.com</a></li>
-                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
-                        <li><a href="#">Dubai, UAE</a></li>
+                        @if($footer->field('email'))
+                            <li><a href="mailto:{{ $footer->field('email') }}">{{ $footer->field('email') }}</a></li>
+                        @endif
+                        @if($footer->field('phone'))
+                            <li><a href="tel:{{ $footer->field('phone') }}">{{ $footer->field('phone') }}</a></li>
+                        @endif
+                        @if($footer->field('address:'.app()->getLocale()))
+                            <li><span style="color:var(--text-muted);">{{ $footer->field('address:'.app()->getLocale()) }}</span></li>
+                        @endif
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p>&copy; 2025 Beauty Store. All rights reserved.</p>
+                    <div class="col-md-6 text-center text-md-{{ app()->isLocale('ar') ? 'end' : 'start' }}">
+                        <p>{{ $footer->field('copyright:'.app()->getLocale()) }}</p>
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <p>Crafted with <span class="text-gold">&hearts;</span> for beauty lovers</p>
+                    <div class="col-md-6 text-center text-md-{{ app()->isLocale('ar') ? 'start' : 'end' }}">
+                        <p>{{ __('Crafted with') }} <span class="text-gold">&hearts;</span> {{ __('for beauty lovers') }}</p>
                     </div>
                 </div>
             </div>

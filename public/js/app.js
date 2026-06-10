@@ -2121,6 +2121,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2130,6 +2133,20 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      form: {
+        full_name: '',
+        phone: '',
+        email: '',
+        address: '',
+        delivery_notes: '',
+        city: '',
+        shipping_price: 0
+      },
+      loading: false,
+      errors: {},
+      formErrors: {},
+      orderSuccess: false,
+      orderId: null,
       cities: [{
         name: {
           ar: "الإسكندرية",
@@ -2295,9 +2312,84 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     },
     lang: function lang() {
       return document.documentElement.lang || 'en';
+    },
+    selectedCity: function selectedCity() {
+      var _this = this;
+      if (!this.form.city) return null;
+      return this.cities.find(function (c) {
+        return c.name[_this.lang] === _this.form.city;
+      }) || null;
     }
   }),
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("cart", ["updateQuantity", "remove", "clear"]))
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("cart", ["updateQuantity", "remove", "clear", "setShipping"])), {}, {
+    onCityChange: function onCityChange() {
+      if (this.selectedCity) {
+        this.form.shipping_price = this.selectedCity.shipping_price;
+        this.setShipping(this.selectedCity.shipping_price);
+      }
+    },
+    placeOrder: function placeOrder() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var res, _err$response, _err$response2;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _this2.errors = {};
+              _this2.formErrors = {};
+              if (_this2.form.city) {
+                _context.next = 5;
+                break;
+              }
+              _this2.formErrors.city = _this2.$t('Please select a city.');
+              return _context.abrupt("return");
+            case 5:
+              if (!(!_this2.form.full_name || !_this2.form.phone || !_this2.form.address)) {
+                _context.next = 8;
+                break;
+              }
+              _this2.formErrors.general = _this2.$t('Please fill in all required fields.');
+              return _context.abrupt("return");
+            case 8:
+              _this2.loading = true;
+              _context.prev = 9;
+              _context.next = 12;
+              return axios.post('/api/orders', {
+                token: _this2.cart.token,
+                full_name: _this2.form.full_name,
+                phone: _this2.form.phone,
+                email: _this2.form.email,
+                address: _this2.form.address,
+                delivery_notes: _this2.form.delivery_notes,
+                shipping_price: _this2.form.shipping_price
+              });
+            case 12:
+              res = _context.sent;
+              _this2.$store.commit('cart/SET_CART', res.data.cart);
+              _this2.orderId = res.data.order_id;
+              _this2.orderSuccess = true;
+              _context.next = 21;
+              break;
+            case 18:
+              _context.prev = 18;
+              _context.t0 = _context["catch"](9);
+              if (((_err$response = _context.t0.response) === null || _err$response === void 0 ? void 0 : _err$response.status) === 422) {
+                _this2.errors = _context.t0.response.data.errors || {};
+              } else {
+                _this2.formErrors.general = ((_err$response2 = _context.t0.response) === null || _err$response2 === void 0 || (_err$response2 = _err$response2.data) === null || _err$response2 === void 0 ? void 0 : _err$response2.message) || 'Something went wrong.';
+              }
+            case 21:
+              _context.prev = 21;
+              _this2.loading = false;
+              return _context.finish(21);
+            case 24:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[9, 18, 21, 24]]);
+      }))();
+    }
+  })
 });
 
 /***/ }),
@@ -2449,7 +2541,45 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm.cart.items_count > 0 ? _c("section", {
+  return _c("div", [_vm.orderSuccess ? _c("section", {
+    staticClass: "luxury-section",
+    staticStyle: {
+      "padding-top": "60px",
+      "padding-bottom": "60px"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-lg-6 text-center"
+  }, [_c("div", {
+    staticClass: "empty-state"
+  }, [_vm._m(0), _vm._v(" "), _c("h2", {
+    staticClass: "empty-title"
+  }, [_vm._v(_vm._s(_vm.$t("Order Placed Successfully")))]), _vm._v(" "), _c("p", {
+    staticClass: "empty-desc"
+  }, [_vm._v(_vm._s(_vm.$t("Thank you for your order!")))]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "var(--accent-gold)",
+      "font-size": "1.1rem",
+      "margin-bottom": "2rem"
+    }
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("Order number")) + ": "), _c("strong", [_vm._v("#" + _vm._s(_vm.orderId))])]), _vm._v(" "), _c("p", {
+    staticClass: "empty-desc",
+    staticStyle: {
+      "margin-top": "-1rem"
+    }
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("We will contact you shortly to confirm your order.")) + "\n                        ")]), _vm._v(" "), _c("div", {
+    staticClass: "empty-actions"
+  }, [_c("a", {
+    staticClass: "btn-gold",
+    attrs: {
+      href: "/shop"
+    }
+  }, [_c("span", [_vm._v(_vm._s(_vm.$t("Explore Collection")))]), _vm._v(" "), _c("i", {
+    staticClass: "bi bi-arrow-right"
+  })])])])])])])]) : _vm.cart.items_count > 0 ? _c("section", {
     staticClass: "luxury-section",
     staticStyle: {
       "padding-top": "20px"
@@ -2464,6 +2594,7 @@ var render = function render() {
     staticClass: "cart-header-bar d-none d-lg-grid"
   }, [_c("span", [_vm._v(_vm._s(_vm.$t("Product")))]), _vm._v(" "), _c("span"), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.$t("Price")))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.$t("Qty")))]), _vm._v(" "), _c("span")]), _vm._v(" "), _vm._l(_vm.cart.items, function (item) {
     return _c("div", {
+      key: item.id,
       staticClass: "cart-item"
     }, [_c("div", {
       staticClass: "cart-item-image"
@@ -2506,7 +2637,7 @@ var render = function render() {
           });
         }
       }
-    }, [_vm._v("−\n                        ")]), _vm._v(" "), _c("input", {
+    }, [_vm._v("−\n                            ")]), _vm._v(" "), _c("input", {
       staticClass: "cart-qty-input",
       attrs: {
         type: "text",
@@ -2529,7 +2660,7 @@ var render = function render() {
           });
         }
       }
-    }, [_vm._v("+\n                        ")])]), _vm._v(" "), _c("button", {
+    }, [_vm._v("+\n                            ")])]), _vm._v(" "), _c("button", {
       staticClass: "cart-remove-btn",
       attrs: {
         "data-id": item.id
@@ -2585,11 +2716,11 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "bi bi-trash3"
-  }), _vm._v("\n                        " + _vm._s(_vm.$t("Clear Entire Cart")) + "\n                    ")])]), _vm._v(" "), _c("div", {
+  }), _vm._v("\n                            " + _vm._s(_vm.$t("Clear Entire Cart")) + "\n                        ")])]), _vm._v(" "), _c("div", {
     staticClass: "delivery-section"
   }, [_c("div", {
     staticClass: "delivery-header"
-  }, [_vm._m(0), _vm._v(" "), _c("div", [_c("h3", [_vm._v(_vm._s(_vm.$t("Delivery Details")))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.$t("Select your city and provide your delivery address")))])])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", [_c("h3", [_vm._v(_vm._s(_vm.$t("Delivery Details")))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.$t("Select your city and provide your delivery address")))])])]), _vm._v(" "), _c("div", {
     staticClass: "delivery-body"
   }, [_c("div", {
     staticClass: "delivery-form-group"
@@ -2598,25 +2729,207 @@ var render = function render() {
   }, [_vm._v(_vm._s(_vm.$t("City")))]), _vm._v(" "), _c("div", {
     staticClass: "city-select-wrap"
   }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.city,
+      expression: "form.city"
+    }],
     staticClass: "city-select",
-    attrs: {
-      name: "city"
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.form, "city", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }, _vm.onCityChange]
     }
   }, [_c("option", {
     attrs: {
       value: "",
-      disabled: "",
-      selected: ""
+      disabled: ""
     }
   }, [_vm._v(_vm._s(_vm.$t("Select your city")))]), _vm._v(" "), _vm._l(_vm.cities, function (city) {
     return _c("option", {
+      key: city.name.en,
       domProps: {
         value: city.name[_vm.lang]
       }
-    }, [_vm._v("\n                                        " + _vm._s(city.name[_vm.lang]) + "\n                                    ")]);
-  })], 2)])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                                            " + _vm._s(city.name[_vm.lang]) + "\n                                        ")]);
+  })], 2)]), _vm._v(" "), _vm.errors.city ? _c("span", {
+    staticClass: "cart-field-error"
+  }, [_vm._v(_vm._s(_vm.errors.city[0]))]) : _vm._e(), _vm._v(" "), _vm.formErrors.city ? _c("span", {
+    staticClass: "cart-field-error"
+  }, [_vm._v(_vm._s(_vm.formErrors.city))]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "delivery-divider"
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])], 2), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "delivery-form-group"
+  }, [_c("label", {
+    staticClass: "delivery-form-label"
+  }, [_vm._v(_vm._s(_vm.$t("Full Name")))]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.full_name,
+      expression: "form.full_name"
+    }],
+    staticClass: "delivery-form-input",
+    "class": {
+      "is-invalid": _vm.errors.full_name
+    },
+    attrs: {
+      type: "text",
+      placeholder: _vm.$t("Full Name")
+    },
+    domProps: {
+      value: _vm.form.full_name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "full_name", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors.full_name ? _c("span", {
+    staticClass: "cart-field-error"
+  }, [_vm._v(_vm._s(_vm.errors.full_name[0]))]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "delivery-form-row"
+  }, [_c("div", {
+    staticClass: "delivery-form-group"
+  }, [_c("label", {
+    staticClass: "delivery-form-label"
+  }, [_vm._v(_vm._s(_vm.$t("Phone Number")))]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.phone,
+      expression: "form.phone"
+    }],
+    staticClass: "delivery-form-input",
+    "class": {
+      "is-invalid": _vm.errors.phone
+    },
+    attrs: {
+      type: "tel",
+      placeholder: "+20 1XX XXX XXXX"
+    },
+    domProps: {
+      value: _vm.form.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "phone", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors.phone ? _c("span", {
+    staticClass: "cart-field-error"
+  }, [_vm._v(_vm._s(_vm.errors.phone[0]))]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "delivery-form-group"
+  }, [_c("label", {
+    staticClass: "delivery-form-label"
+  }, [_vm._v("\n                                        " + _vm._s(_vm.$t("Email Address")) + "\n                                        "), _c("span", {
+    staticStyle: {
+      color: "var(--text-muted)",
+      "text-transform": "none",
+      "letter-spacing": "0",
+      "font-weight": "400"
+    }
+  }, [_vm._v("(" + _vm._s(_vm.$t("Optional")) + ")")])]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.email,
+      expression: "form.email"
+    }],
+    staticClass: "delivery-form-input",
+    "class": {
+      "is-invalid": _vm.errors.email
+    },
+    attrs: {
+      type: "email",
+      placeholder: "your@email.com"
+    },
+    domProps: {
+      value: _vm.form.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "email", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors.email ? _c("span", {
+    staticClass: "cart-field-error"
+  }, [_vm._v(_vm._s(_vm.errors.email[0]))]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    staticClass: "delivery-form-group"
+  }, [_c("label", {
+    staticClass: "delivery-form-label"
+  }, [_vm._v(_vm._s(_vm.$t("Detailed Address")))]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.address,
+      expression: "form.address"
+    }],
+    staticClass: "delivery-form-input",
+    "class": {
+      "is-invalid": _vm.errors.address
+    },
+    attrs: {
+      rows: "3",
+      placeholder: _vm.$t("Detailed Address")
+    },
+    domProps: {
+      value: _vm.form.address
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "address", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors.address ? _c("span", {
+    staticClass: "cart-field-error"
+  }, [_vm._v(_vm._s(_vm.errors.address[0]))]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "delivery-form-group",
+    staticStyle: {
+      "margin-bottom": "0"
+    }
+  }, [_c("label", {
+    staticClass: "delivery-form-label"
+  }, [_vm._v("\n                                    " + _vm._s(_vm.$t("Delivery Notes")) + "\n                                    "), _c("span", {
+    staticStyle: {
+      color: "var(--text-muted)",
+      "text-transform": "none",
+      "letter-spacing": "0",
+      "font-weight": "400"
+    }
+  }, [_vm._v("(" + _vm._s(_vm.$t("Optional")) + ")")])]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.delivery_notes,
+      expression: "form.delivery_notes"
+    }],
+    staticClass: "delivery-form-input",
+    attrs: {
+      rows: "2",
+      placeholder: _vm.$t("Delivery Notes")
+    },
+    domProps: {
+      value: _vm.form.delivery_notes
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "delivery_notes", $event.target.value);
+      }
+    }
+  })])])])], 2), _vm._v(" "), _c("div", {
     staticClass: "col-lg-4"
   }, [_c("div", {
     staticClass: "cart-summary-card"
@@ -2627,41 +2940,77 @@ var render = function render() {
     staticStyle: {
       color: "var(--accent-gold)"
     }
-  }), _vm._v("\n                            " + _vm._s(_vm.$t("Order Summary")) + "\n                        ")]), _vm._v(" "), _c("span", {
+  }), _vm._v("\n                                " + _vm._s(_vm.$t("Order Summary")) + "\n                            ")]), _vm._v(" "), _c("span", {
     staticClass: "item-count"
   }, [_vm._v(_vm._s(_vm.cart.items_count) + " " + _vm._s(_vm.$t("Items")))])]), _vm._v(" "), _c("div", {
     staticClass: "cart-summary-body"
-  }, [ false ? 0 : _vm._e(), _vm._v(" "),  false ? 0 : _vm._e(), _vm._v(" "),  false ? 0 : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "cart-summary-row"
   }, [_c("span", {
     staticClass: "label"
   }, [_vm._v(_vm._s(_vm.$t("Subtotal")) + " (" + _vm._s(_vm.cart.items_count) + " " + _vm._s(_vm.$t("items")) + ")")]), _vm._v(" "), _c("span", {
     staticClass: "value"
-  }, [_vm._v(_vm._s(_vm.cart.subtotal))])]), _vm._v(" "),  false ? 0 : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.cart.subtotal))])]), _vm._v(" "), _c("div", {
     staticClass: "cart-summary-row"
   }, [_c("span", {
     staticClass: "label"
   }, [_vm._v(_vm._s(_vm.$t("Shipping")))]), _vm._v(" "), _c("span", {
-    staticClass: "value free"
-  }, [_vm._v(_vm._s(_vm.cart.shipping === 0 ? _vm.$t("FREE") : _vm.cart.shipping))])]), _vm._v(" "), _c("div", {
+    staticClass: "value"
+  }, [_vm._v(_vm._s(_vm.selectedCity ? _vm.cart.shipping : "—"))])]), _vm._v(" "), _c("div", {
     staticClass: "cart-summary-row total"
   }, [_c("span", {
     staticClass: "label"
   }, [_vm._v(_vm._s(_vm.$t("Total")))]), _vm._v(" "), _c("span", {
     staticClass: "value"
-  }, [_vm._v(_vm._s(_vm.cart.total))])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.selectedCity ? _vm.cart.total : _vm.cart.subtotal))])])]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      padding: "1.25rem 1.5rem",
+      "border-top": "1px solid rgba(224,176,128,0.15)"
+    }
+  }, [_c("div", {
+    staticStyle: {
+      display: "flex",
+      "align-items": "center",
+      gap: "10px",
+      color: "var(--text-secondary)",
+      "font-size": "0.9rem"
+    }
+  }, [_c("i", {
+    staticClass: "bi bi-cash-coin",
+    staticStyle: {
+      color: "var(--accent-gold)",
+      "font-size": "1.2rem"
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.$t("Cash on Delivery")))])])]), _vm._v(" "), _c("div", {
     staticClass: "cart-summary-footer"
-  }, [_c("a", {
+  }, [_vm.formErrors.general ? _c("div", {
+    staticStyle: {
+      color: "#E07A75",
+      "font-size": "0.85rem",
+      "margin-bottom": "10px",
+      "text-align": "center"
+    }
+  }, [_vm._v("\n                                " + _vm._s(_vm.formErrors.general) + "\n                            ")]) : _vm._e(), _vm._v(" "), _c("button", {
     staticClass: "btn-gold w-100 justify-content-center",
     staticStyle: {
-      "margin-bottom": "12px"
+      "margin-bottom": "12px",
+      border: "none",
+      cursor: "pointer"
     },
     attrs: {
-      href: "/checkout"
+      disabled: _vm.loading
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.placeOrder.apply(null, arguments);
+      }
     }
-  }, [_c("span", [_vm._v(_vm._s(_vm.$t("Proceed to Checkout")))]), _vm._v(" "), _c("i", {
+  }, [_vm.loading ? _c("span", [_vm._v(_vm._s(_vm.$t("Placing Order...")))]) : _c("span", [_vm._v(_vm._s(_vm.$t("Place Order")))]), _vm._v(" "), !_vm.loading ? _c("i", {
     "class": "bi bi-arrow-".concat(_vm.dir === "ltr" ? "right" : "left")
-  })])])])])])])]) : _c("section", {
+  }) : _vm._e(), _vm._v(" "), _vm.loading ? _c("i", {
+    staticClass: "bi bi-hourglass-split"
+  }) : _vm._e()])])])])])])]) : _c("section", {
     staticClass: "luxury-section",
     staticStyle: {
       "padding-top": "20px"
@@ -2674,11 +3023,11 @@ var render = function render() {
     staticClass: "col-lg-7"
   }, [_c("div", {
     staticClass: "empty-state"
-  }, [_vm._m(7), _vm._v(" "), _c("h2", {
+  }, [_vm._m(2), _vm._v(" "), _c("h2", {
     staticClass: "empty-title"
   }, [_vm._v(_vm._s(_vm.$t("Your Cart is Empty")))]), _vm._v(" "), _c("p", {
     staticClass: "empty-desc"
-  }, [_vm._v("\n                        " + _vm._s(_vm.$t("Looks like you haven't added any products yet. Explore our collection and find something you love.")) + "\n                    ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                            " + _vm._s(_vm.$t("Looks like you haven't added any products yet. Explore our collection and find something you love.")) + "\n                        ")]), _vm._v(" "), _c("div", {
     staticClass: "empty-actions"
   }, [_c("a", {
     staticClass: "btn-gold",
@@ -2692,115 +3041,32 @@ var render = function render() {
     attrs: {
       href: "/"
     }
-  }, [_c("span", [_vm._v(_vm._s(_vm.$t("Back to Home")))])])])])])])])]);
+  }, [_c("span", [_vm._v(_vm._s(_vm.$t("Back to Home")))])])])])])])])])]);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "empty-icon-wrap"
+  }, [_c("div", {
+    staticClass: "empty-icon-ring"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "empty-icon-ring"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "empty-icon-circle",
+    staticStyle: {
+      background: "linear-gradient(135deg, #4CAF50, #388E3C)"
+    }
+  }, [_c("i", {
+    staticClass: "bi bi-check-lg"
+  })])]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "delivery-header-icon"
   }, [_c("i", {
     staticClass: "bi bi-geo-alt"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "delivery-form-group"
-  }, [_c("label", {
-    staticClass: "delivery-form-label"
-  }, [_vm._v("Full Name")]), _vm._v(" "), _c("input", {
-    staticClass: "delivery-form-input",
-    attrs: {
-      type: "text",
-      placeholder: "Your full name"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "delivery-form-row"
-  }, [_c("div", {
-    staticClass: "delivery-form-group"
-  }, [_c("label", {
-    staticClass: "delivery-form-label"
-  }, [_vm._v("Phone Number")]), _vm._v(" "), _c("input", {
-    staticClass: "delivery-form-input",
-    attrs: {
-      type: "tel",
-      placeholder: "+971 50 XXX XXXX"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "delivery-form-group"
-  }, [_c("label", {
-    staticClass: "delivery-form-label"
-  }, [_vm._v("Email Address")]), _vm._v(" "), _c("input", {
-    staticClass: "delivery-form-input",
-    attrs: {
-      type: "email",
-      placeholder: "your@email.com"
-    }
-  })])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "delivery-form-group"
-  }, [_c("label", {
-    staticClass: "delivery-form-label"
-  }, [_vm._v("Detailed Address")]), _vm._v(" "), _c("textarea", {
-    staticClass: "delivery-form-input",
-    attrs: {
-      rows: "3",
-      placeholder: "Street, Building, Floor, Apartment, Area, P.O. Box..."
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "delivery-form-group",
-    staticStyle: {
-      "margin-bottom": "0"
-    }
-  }, [_c("label", {
-    staticClass: "delivery-form-label"
-  }, [_vm._v("Delivery Notes "), _c("span", {
-    staticStyle: {
-      color: "var(--text-muted)",
-      "text-transform": "none",
-      "letter-spacing": "0",
-      "font-weight": "400"
-    }
-  }, [_vm._v("(Optional)")])]), _vm._v(" "), _c("textarea", {
-    staticClass: "delivery-form-input",
-    attrs: {
-      rows: "2",
-      placeholder: "Special instructions for the courier, preferred delivery time, gate code..."
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "shipping-progress-bar",
-    staticStyle: {
-      "margin-top": "8px"
-    }
-  }, [_c("div", {
-    staticClass: "shipping-progress-fill",
-    staticStyle: {
-      width: "100%"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("button", {
-    staticClass: "coupon-remove"
-  }, [_c("i", {
-    staticClass: "bi bi-x"
   })]);
 }, function () {
   var _vm = this,
@@ -2991,25 +3257,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               dispatch = _ref2.dispatch, state = _ref2.state;
-              console.log(payload);
               if (!(payload.quantity > 0)) {
-                _context2.next = 9;
+                _context2.next = 8;
                 break;
               }
-              _context2.next = 5;
+              _context2.next = 4;
               return axios.post("/api/cart/add", {
                 product_id: payload.productId,
                 quantity: payload.quantity,
                 token: state.cart.token
               });
-            case 5:
+            case 4:
               res = _context2.sent;
               dispatch("sync", res);
-              _context2.next = 10;
+              _context2.next = 9;
               break;
-            case 9:
+            case 8:
               dispatch('remove', payload.productId);
-            case 10:
+            case 9:
             case "end":
               return _context2.stop();
           }
@@ -3061,8 +3326,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    sync: function sync(_ref5, res) {
-      var commit = _ref5.commit;
+    setShipping: function setShipping(_ref5, shippingPrice) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        var dispatch, state, res;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              dispatch = _ref5.dispatch, state = _ref5.state;
+              _context5.next = 3;
+              return axios.post("/api/cart/shipping", {
+                shipping_price: shippingPrice,
+                token: state.cart.token
+              });
+            case 3:
+              res = _context5.sent;
+              dispatch("sync", res);
+            case 5:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5);
+      }))();
+    },
+    sync: function sync(_ref6, res) {
+      var commit = _ref6.commit;
       commit("SET_CART", res.data);
     }
   }
@@ -3158,6 +3445,27 @@ __webpack_require__.r(__webpack_exports__);
     "applied": "تم تطبيقه",
     "items": "العناصر",
     "Proceed to Checkout": "المتابعة إلى الدفع",
+    "Place Order": "تأكيد الطلب",
+    "Cash on Delivery": "الدفع عند الاستلام",
+    "Payment Method": "طريقة الدفع",
+    "Full Name": "الاسم الكامل",
+    "Phone Number": "رقم الهاتف",
+    "Email Address": "البريد الإلكتروني",
+    "Detailed Address": "العنوان التفصيلي",
+    "Delivery Notes": "ملاحظات التوصيل",
+    "Optional": "اختياري",
+    "City": "المدينة",
+    "Select your city": "اختر مدينتك",
+    "Delivery Details": "بيانات التوصيل",
+    "Select your city and provide your delivery address": "اختر مدينتك وأدخل عنوان التوصيل",
+    "Order Placed Successfully": "تم تقديم الطلب بنجاح",
+    "Thank you for your order!": "شكراً لطلبك!",
+    "Order number": "رقم الطلب",
+    "We will contact you shortly to confirm your order.": "سنتواصل معك قريباً لتأكيد الطلب.",
+    "Track Your Order": "تتبع طلبك",
+    "Please fill in all required fields.": "يرجى ملء جميع الحقول المطلوبة.",
+    "Please select a city.": "يرجى اختيار المدينة.",
+    "Placing Order...": "جاري تقديم الطلب...",
     "backup": {
       "download": "تحميل قاعدة البيانات",
       "not-found": "لا يوجد نسخة احتياطية"
@@ -4098,6 +4406,27 @@ __webpack_require__.r(__webpack_exports__);
     "applied": "applied",
     "items": "items",
     "Proceed to Checkout": "Proceed to Checkout",
+    "Place Order": "Place Order",
+    "Cash on Delivery": "Cash on Delivery",
+    "Payment Method": "Payment Method",
+    "Full Name": "Full Name",
+    "Phone Number": "Phone Number",
+    "Email Address": "Email Address",
+    "Detailed Address": "Detailed Address",
+    "Delivery Notes": "Delivery Notes",
+    "Optional": "Optional",
+    "City": "City",
+    "Select your city": "Select your city",
+    "Delivery Details": "Delivery Details",
+    "Select your city and provide your delivery address": "Select your city and provide your delivery address",
+    "Order Placed Successfully": "Order Placed Successfully",
+    "Thank you for your order!": "Thank you for your order!",
+    "Order number": "Order number",
+    "We will contact you shortly to confirm your order.": "We will contact you shortly to confirm your order.",
+    "Track Your Order": "Track Your Order",
+    "Please fill in all required fields.": "Please fill in all required fields.",
+    "Please select a city.": "Please select a city.",
+    "Placing Order...": "Placing Order...",
     "backup": {
       "download": "Download Database",
       "not-found": "There are no backups!"

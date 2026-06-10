@@ -33,6 +33,7 @@ Route::prefix(LaravelLocalization::setLocale())
     ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->group(function () {
         Route::get('cart', [OrderController::class, 'cart'])->name('orders.cart');
+        Route::get('track-order', [OrderController::class, 'track'])->name('orders.track');
         Route::get('shop', [ProductController::class, 'index'])->name('products.index');
         Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 
