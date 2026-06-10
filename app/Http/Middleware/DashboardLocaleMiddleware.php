@@ -17,10 +17,7 @@ class DashboardLocaleMiddleware
     public function handle($request, Closure $next)
     {
         app()->setLocale(
-            Session::get(
-                'locale',
-                $request->get('language', app()->getLocale())
-            )
+            $request->query('language', session('locale', 'en'))
         );
 
         return $next($request);
