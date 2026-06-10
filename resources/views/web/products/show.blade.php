@@ -35,7 +35,6 @@
                             <div class="product-float-badges">
                                 <span class="product-float-badge badge-new">{{ $product->category->name }}</span>
                             </div>
-                            <button class="gallery-wishlist"><i class="bi bi-heart"></i></button>
 
                             @foreach($product->getMedia() as $key => $media)
                                 <div class="slide s{{ $key++ }}">
